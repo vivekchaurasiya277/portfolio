@@ -4,6 +4,7 @@ import { createEarth, createStarfield } from './earth.js';
 import { MarkerSystem } from './markers.js';
 import { InteractionSystem } from './interactions.js';
 import { UISystem } from './ui.js';
+import { PlanetarySystem } from './planets.js';
 
 // Initialize Core 3D Scene
 const globeScene = new GlobeScene('canvas-container');
@@ -12,6 +13,9 @@ const starfield = createStarfield();
 
 globeScene.add(earthGroup);
 globeScene.add(starfield);
+
+// Celestial Planetary System (Moon, Mars, Jupiter, Saturn, Neptune)
+const planetarySystem = new PlanetarySystem(globeScene.scene);
 
 const markerSystem = new MarkerSystem(earthGroup, 50);
 const uiSystem = new UISystem(null);
@@ -77,6 +81,9 @@ async function init() {
     
     // Animate Markers and their 2D Screen Badges
     markerSystem.update(elapsedTime, globeScene.camera, earthGroup);
+
+    // Animate Solar System Planets (Moon orbit, Mars, Jupiter, Saturn, Neptune)
+    planetarySystem.update(elapsedTime);
     
     // Slow deep-space starfield rotation
     starfield.rotation.y = elapsedTime * 0.015;
