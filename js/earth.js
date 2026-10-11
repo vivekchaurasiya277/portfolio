@@ -7,29 +7,38 @@ export function createEarth(radius = 50) {
   const colorMapUrl = 'https://unpkg.com/three-globe/example/img/earth-blue-marble.jpg';
   const bumpMapUrl = 'https://unpkg.com/three-globe/example/img/earth-topology.png';
   const waterMapUrl = 'https://unpkg.com/three-globe/example/img/earth-water.png';
-  const cloudMapUrl = 'https://unpkg.com/three-globe/example/img/earth-clouds10k.png';
+  
+  // Local 4K satellite cloud texture with remote fallback
+  const cloudMapUrl = './assets/earth-clouds.png';
 
-  // Base Earth Mesh with intense bump mapping for 3D effect
+  // Base Earth Mesh with intense bump mapping for 3D realism
   const geometry = new THREE.SphereGeometry(radius, 128, 128); 
   const material = new THREE.MeshPhongMaterial({
     map: textureLoader.load(colorMapUrl),
     bumpMap: textureLoader.load(bumpMapUrl),
-    bumpScale: 5.0, // Increased for intense 3D terrain
+    bumpScale: 4.5,
     specularMap: textureLoader.load(waterMapUrl),
-    specular: new THREE.Color(0x555555), // More reflective water
-    shininess: 35
+    specular: new THREE.Color(0x334455),
+    shininess: 25
   });
 
   const earthMesh = new THREE.Mesh(geometry, material);
   earthGroup.add(earthMesh);
 
-  // Cloud Layer
-  const cloudGeometry = new THREE.SphereGeometry(radius * 1.025, 128, 128); // Pushed further out
-  const cloudMaterial = new THREE.MeshPhongMaterial({
-    map: textureLoader.load(cloudMapUrl),
+  // Realistic Satellite Cloud Layer (inspired by Zoom Earth)
+  const cloudGeometry = new THREE.SphereGeometry(radius * 1.018, 128, 128);
+  const cloudTexture = textureLoader.load(cloudMapUrl, undefined, undefined, () => {
+    // Fallback to high-res cloud texture if local file has issue
+    cloudTexture.image = textureLoader.load('https://cdn.jsdelivr.net/gh/turban/webgl-earth/images/fair_clouds_4k.png');
+  });
+
+  const cloudMaterial = new THREE.MeshStandardMaterial({
+    map: cloudTexture,
     transparent: true,
-    opacity: 0.9,
-    blending: THREE.AdditiveBlending,
+    opacity: 0.82,
+    roughness: 0.9,
+    metalness: 0.05,
+    blending: THREE.NormalBlending,
     side: THREE.DoubleSide,
     depthWrite: false
   });
@@ -38,8 +47,8 @@ export function createEarth(radius = 50) {
   earthGroup.add(cloudMesh);
   earthGroup.userData.cloudMesh = cloudMesh;
 
-  // Enhanced Atmosphere Glow (Tuned for Bloom)
-  const atmosGeometry = new THREE.SphereGeometry(radius * 1.1, 128, 128);
+  // Outer Atmospheric Glow
+  const atmosGeometry = new THREE.SphereGeometry(radius * 1.12, 128, 128);
   
   const vertexShader = `
     varying vec3 vNormal;
@@ -52,8 +61,8 @@ export function createEarth(radius = 50) {
   const fragmentShader = `
     varying vec3 vNormal;
     void main() {
-      float intensity = pow(0.6 - dot(vNormal, vec3(0, 0, 1.0)), 3.5);
-      gl_FragColor = vec4(0.3, 0.6, 1.0, 1.0) * intensity * 1.2; // Softer atmosphere
+      float intensity = pow(0.65 - dot(vNormal, vec3(0, 0, 1.0)), 3.2);
+      gl_FragColor = vec4(0.25, 0.65, 1.0, 1.0) * intensity * 1.4;
     }
   `;
 
@@ -75,66 +84,66 @@ export function createEarth(radius = 50) {
 export function createStarfield() {
   const starsGroup = new THREE.Group();
   
-  // Background Stars (far away, static)
+  // Background Stars (deep space)
   const bgStarsGeom = new THREE.BufferGeometry();
-  const bgCount = 4000;
+  const bgCount = 4500;
   const bgPositions = new Float32Array(bgCount * 3);
   const bgColors = new Float32Array(bgCount * 3);
   const color = new THREE.Color();
 
-  for(let i = 0; i < bgCount; i++) {
-    const r = 800 + Math.random() * 600;
+  for (let i = 0; i < bgCount; i++) {
+    const r = 900 + Math.random() * 800;
     const theta = 2 * Math.PI * Math.random();
     const phi = Math.acos(2 * Math.random() - 1);
     
-    bgPositions[i*3] = r * Math.sin(phi) * Math.cos(theta);
-    bgPositions[i*3+1] = r * Math.sin(phi) * Math.sin(theta);
-    bgPositions[i*3+2] = r * Math.cos(phi);
+    bgPositions[i * 3] = r * Math.sin(phi) * Math.cos(theta);
+    bgPositions[i * 3 + 1] = r * Math.sin(phi) * Math.sin(theta);
+    bgPositions[i * 3 + 2] = r * Math.cos(phi);
 
-    color.setHSL(0.6 + Math.random() * 0.1, 0.8, Math.random());
-    bgColors[i*3] = color.r;
-    bgColors[i*3+1] = color.g;
-    bgColors[i*3+2] = color.b;
+    color.setHSL(0.55 + Math.random() * 0.15, 0.7, 0.5 + Math.random() * 0.5);
+    bgColors[i * 3] = color.r;
+    bgColors[i * 3 + 1] = color.g;
+    bgColors[i * 3 + 2] = color.b;
   }
   bgStarsGeom.setAttribute('position', new THREE.BufferAttribute(bgPositions, 3));
   bgStarsGeom.setAttribute('color', new THREE.BufferAttribute(bgColors, 3));
+  
   const bgStarsMat = new THREE.PointsMaterial({
-    size: 1.5,
+    size: 1.8,
     vertexColors: true,
     transparent: true,
-    opacity: 0.8,
+    opacity: 0.85,
     sizeAttenuation: true
   });
   starsGroup.add(new THREE.Points(bgStarsGeom, bgStarsMat));
 
-  // Foreground Parallax Space Dust (closer, moves faster relative to camera)
+  // Foreground Parallax Space Dust
   const dustGeom = new THREE.BufferGeometry();
-  const dustCount = 1500;
+  const dustCount = 1200;
   const dustPositions = new Float32Array(dustCount * 3);
   
-  for(let i = 0; i < dustCount; i++) {
-    // Generate dust much closer to the earth
-    const r = 150 + Math.random() * 200;
+  for (let i = 0; i < dustCount; i++) {
+    const r = 160 + Math.random() * 220;
     const theta = 2 * Math.PI * Math.random();
     const phi = Math.acos(2 * Math.random() - 1);
     
-    dustPositions[i*3] = r * Math.sin(phi) * Math.cos(theta);
-    dustPositions[i*3+1] = r * Math.sin(phi) * Math.sin(theta);
-    dustPositions[i*3+2] = r * Math.cos(phi);
+    dustPositions[i * 3] = r * Math.sin(phi) * Math.cos(theta);
+    dustPositions[i * 3 + 1] = r * Math.sin(phi) * Math.sin(theta);
+    dustPositions[i * 3 + 2] = r * Math.cos(phi);
   }
   dustGeom.setAttribute('position', new THREE.BufferAttribute(dustPositions, 3));
   const dustMat = new THREE.PointsMaterial({
-    color: 0x88ccff,
-    size: 0.6,
+    color: 0x66ccff,
+    size: 0.8,
     transparent: true,
-    opacity: 0.5,
+    opacity: 0.55,
     blending: THREE.AdditiveBlending,
     sizeAttenuation: true
   });
   
   const dustMesh = new THREE.Points(dustGeom, dustMat);
   starsGroup.add(dustMesh);
-  starsGroup.userData.dustMesh = dustMesh; // Expose for animation
+  starsGroup.userData.dustMesh = dustMesh;
 
   return starsGroup;
 }

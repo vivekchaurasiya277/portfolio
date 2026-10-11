@@ -12,80 +12,88 @@ export class InteractionSystem {
 
     this.raycaster = new THREE.Raycaster();
     this.mouse = new THREE.Vector2();
-    
-    // Track if user is currently interacting
+    this.pointerDownPos = new THREE.Vector2();
     this.isDragging = false;
     
+    // Connect marker HTML badge click callback
+    this.markerSystem.setClickHandler((project) => {
+      this.handleSelectProject(project);
+    });
+
     this.initEvents();
   }
 
   initEvents() {
-    window.addEventListener('pointerdown', () => { this.isDragging = false; });
+    window.addEventListener('pointerdown', (e) => { 
+      this.isDragging = false; 
+      this.pointerDownPos.set(e.clientX, e.clientY);
+    });
+
     window.addEventListener('pointermove', (e) => this.onPointerMove(e));
     window.addEventListener('pointerup', (e) => this.onPointerUp(e));
     
-    // When controls start/stop
     this.controls.addEventListener('start', () => {
       document.body.style.cursor = 'grabbing';
     });
+
     this.controls.addEventListener('end', () => {
       document.body.style.cursor = 'default';
     });
   }
 
   onPointerMove(event) {
-    this.isDragging = true;
-    
-    // Calculate mouse position in normalized device coordinates
+    // Check if moving exceeds click threshold
+    const dist = Math.hypot(event.clientX - this.pointerDownPos.x, event.clientY - this.pointerDownPos.y);
+    if (dist > 5) {
+      this.isDragging = true;
+    }
+
     this.mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
     this.mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
 
-    // Handle Hover Raycasting
+    // Handle Hover Raycasting on large hit targets
     this.raycaster.setFromCamera(this.mouse, this.camera);
-    const intersects = this.raycaster.intersectObjects(
-      this.markerSystem.markers.map(m => m.userData.coreMesh)
-    );
+    const hitTargets = this.markerSystem.markers.map(m => m.userData.hitMesh).filter(Boolean);
+    const intersects = this.raycaster.intersectObjects(hitTargets);
 
     if (intersects.length > 0) {
       document.body.style.cursor = 'pointer';
-      // Could trigger hover label here
-    } else if (!this.controls.state) { // Don't reset if dragging
+    } else if (!this.controls.state) {
       document.body.style.cursor = 'default';
     }
   }
 
   onPointerUp(event) {
-    if (this.isDragging) {
-      // Small threshold to distinguish click vs drag
-      const deltaX = (event.clientX / window.innerWidth) * 2 - 1 - this.mouse.x;
-      const deltaY = -(event.clientY / window.innerHeight) * 2 + 1 - this.mouse.y;
-      if (Math.abs(deltaX) > 0.01 || Math.abs(deltaY) > 0.01) {
-        return; // It was a drag
-      }
+    const dist = Math.hypot(event.clientX - this.pointerDownPos.x, event.clientY - this.pointerDownPos.y);
+    if (dist > 6) {
+      return; // Was a camera drag/rotation
     }
 
-    // Handle Click Raycasting
+    // Raycast on click
+    this.mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+    this.mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+
     this.raycaster.setFromCamera(this.mouse, this.camera);
-    const intersects = this.raycaster.intersectObjects(
-      this.markerSystem.markers.map(m => m.userData.coreMesh)
-    );
+    const hitTargets = this.markerSystem.markers.map(m => m.userData.hitMesh).filter(Boolean);
+    const intersects = this.raycaster.intersectObjects(hitTargets);
 
     if (intersects.length > 0) {
-      // Find parent group
-      let object = intersects[0].object;
-      while (object.parent && !object.userData.isMarker) {
-        object = object.parent;
+      const hitObj = intersects[0].object;
+      const projectData = hitObj.userData.project;
+      if (projectData) {
+        this.handleSelectProject(projectData);
       }
-      
-      const projectData = object.userData.project;
-      this.uiSystem.openModal(projectData);
-      this.focusOnLocation(projectData.location.lat, projectData.location.lng);
     }
   }
 
-  focusOnLocation(lat, lng, zoom = 80) {
-    // Disable auto-rotate temporarily
-    const wasAutoRotate = this.controls.autoRotate;
+  handleSelectProject(project) {
+    if (!project) return;
+    this.uiSystem.openModal(project);
+    this.focusOnLocation(project.location.lat, project.location.lng, 90);
+  }
+
+  focusOnLocation(lat, lng, zoom = 90) {
+    // Temporarily pause auto-rotation to let user inspect
     this.controls.autoRotate = false;
 
     const targetPos = latLongToVector3(lat, lng, zoom);
@@ -94,10 +102,10 @@ export class InteractionSystem {
       x: targetPos.x,
       y: targetPos.y,
       z: targetPos.z,
-      duration: 1.5,
+      duration: 1.4,
       ease: "power2.inOut",
-      onComplete: () => {
-        // Optional: re-enable autoRotate after a delay if modal is closed
+      onUpdate: () => {
+        this.controls.update();
       }
     });
   }

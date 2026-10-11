@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Interactive 3D Earth Portfolio</title>
+    <title>Vivek Chaurasiya — Interactive 3D Earth Portfolio</title>
     
     <!-- Styles -->
     <link rel="stylesheet" href="./css/main.css" />
@@ -13,64 +13,249 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   </head>
   <body>
-    <!-- Background Canvas for 3D Earth -->
+    <!-- 3D Earth WebGL Canvas -->
     <div id="canvas-container"></div>
     
     <!-- Loading Screen -->
     <div id="loading-screen" class="loading-active">
       <div class="loading-ring"></div>
-      <div class="loading-text">INITIALIZING...</div>
+      <div class="loading-text">INITIALIZING 3D EARTH & SOLAR ENVIRONMENT...</div>
       <div class="loading-progress">0%</div>
     </div>
 
-    <!-- UI Overlay -->
+    <!-- UI Overlay Layer -->
     <div id="ui-layer">
-      <!-- Country Labels Container -->
-      <div id="country-labels-container"></div>
+      <!-- 2D Projected Project Badges on Pins -->
+      <div id="project-labels-container"></div>
       
-      <!-- Header -->
+      <!-- Top Header & Navigation -->
       <header class="header">
-        <h1>VIVEK CHAURASIYA</h1>
-        <p>Interactive 3D Earth Portfolio</p>
+        <div class="header-branding">
+          <div class="status-pulse-badge">
+            <span class="pulsing-dot"></span>
+            <span>LIVE 3D ORBIT</span>
+          </div>
+          <h1>VIVEK CHAURASIYA</h1>
+          <p>Full-Stack, AI & Geospatial Systems • B.Tech AI & ML</p>
+        </div>
       </header>
       
-      <!-- Top Right Controls -->
+      <!-- Top Right Controls & Resume Button -->
       <div class="controls-top-right">
-        <button id="audio-toggle" title="Toggle Audio">🔊</button>
-        <a href="#contact" class="contact-btn">say hello &rarr;</a>
+        <button id="resume-btn" class="resume-nav-btn" title="View Full Resume">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+            <polyline points="14 2 14 8 20 8"></polyline>
+            <line x1="16" y1="13" x2="8" y2="13"></line>
+            <line x1="16" y1="17" x2="8" y2="17"></line>
+            <polyline points="10 9 9 9 8 9"></polyline>
+          </svg>
+          <span>Resume</span>
+        </button>
+        <button id="audio-toggle" title="Toggle Audio Ambience">🔊</button>
+        <a href="mailto:vivekchaurasiya.work@gmail.com" class="contact-btn">Get In Touch &rarr;</a>
+      </div>
+
+      <!-- Right Side Showcase Panel -->
+      <aside id="projects-panel" class="projects-panel">
+        <div class="panel-header">
+          <div class="panel-header-title">
+            <span class="panel-cyber-icon">✦</span>
+            <h3>PROJECT DIRECTORY</h3>
+          </div>
+          <button id="panel-toggle-btn" class="panel-toggle-btn" title="Collapse Panel">✕</button>
+        </div>
+        <p class="panel-instructions">Click any card to fly the 3D globe to its coordinates:</p>
+        <div id="projects-list" class="projects-list">
+          <!-- Populated dynamically from projects.json -->
+        </div>
+      </aside>
+
+      <!-- Transparent Window Type Structure on the Globe (Project Detail Modal) -->
+      <div id="project-modal" class="modal glass-floating-window hidden">
+        <button id="close-modal" class="close-btn" aria-label="Close Window">&times;</button>
+        <div class="modal-content">
+          <!-- Injected dynamically -->
+        </div>
+      </div>
+
+      <!-- Comprehensive Resume Modal -->
+      <div id="resume-modal" class="resume-modal-overlay hidden">
+        <div class="resume-modal-card">
+          <div class="resume-header">
+            <div class="resume-title-wrap">
+              <h2>VIVEK CHAURASIYA</h2>
+              <p>Kanpur, India • <a href="mailto:vivekchaurasiya.work@gmail.com">vivekchaurasiya.work@gmail.com</a></p>
+              <div class="resume-links">
+                <a href="https://linkedin.com/in/vivekchaurasiya" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
+                <a href="https://github.com/vivekchaurasiya277" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+              </div>
+            </div>
+            <div class="resume-header-actions">
+              <a href="./vivek_chaurasiya_resume.pdf" download="Vivek_Chaurasiya_Resume.pdf" class="download-resume-btn">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                  <polyline points="7 10 12 15 17 10"></polyline>
+                  <line x1="12" y1="15" x2="12" y2="3"></line>
+                </svg>
+                <span>Download PDF</span>
+              </a>
+              <button id="close-resume-modal" class="close-resume-btn">&times;</button>
+            </div>
+          </div>
+
+          <div class="resume-scrollable-body">
+            <!-- Education -->
+            <section class="resume-section">
+              <h3 class="section-title">EDUCATION</h3>
+              <div class="resume-item">
+                <div class="resume-item-header">
+                  <strong>Kanpur Institute of Technology (KIT)</strong>
+                  <span class="resume-date">2023 – 2027</span>
+                </div>
+                <div class="resume-role">Bachelor of Technology in Computer Science & Engineering (AI & ML) • Kanpur, India</div>
+                <p class="resume-stat"><strong>Academic Record:</strong> SGPA: 8.48/10 (Semester 6) | Cumulative CGPA: 7.0/10 across core CS & AI coursework</p>
+                <p class="resume-subtext"><strong>Core Coursework:</strong> Data Structures & Algorithms, DBMS, Operating Systems, Machine Learning, OOP</p>
+              </div>
+            </section>
+
+            <!-- Technical Experience -->
+            <section class="resume-section">
+              <h3 class="section-title">TECHNICAL EXPERIENCE</h3>
+              
+              <div class="resume-item">
+                <div class="resume-item-header">
+                  <strong>Pradite</strong>
+                  <span class="resume-date">June 2026 – Present</span>
+                </div>
+                <div class="resume-role">Co-Founder & Growth Lead • Kanpur, India</div>
+                <ul class="resume-bullets">
+                  <li>Co-founded zero-knowledge BYOK AI platform protecting developer code via client-side encryption (libsodium); drove initial developer onboarding and feedback loops.</li>
+                  <li>Built product distribution pipeline and community channels across student and indie developer clusters; synthesized bug reports to prioritize technical roadmap sprints.</li>
+                </ul>
+              </div>
+
+              <div class="resume-item">
+                <div class="resume-item-header">
+                  <strong>India Space Academy</strong>
+                  <span class="resume-date">May 2025 – July 2025</span>
+                </div>
+                <div class="resume-role">Remote Sensing & GIS Software Engineering Intern • Remote</div>
+                <ul class="resume-bullets">
+                  <li>Engineered client-side simulation engines for Vegetation Condition Index (VCI) drought severity mapping, Urban Heat Island analysis, and watershed prioritization using Digital Elevation Models (DEM).</li>
+                  <li>Translated satellite imagery processing algorithms into lightweight, dependency-free JavaScript modules packaged as single HTML files for offline use in low-bandwidth environments.</li>
+                </ul>
+              </div>
+            </section>
+
+            <!-- Featured Projects -->
+            <section class="resume-section">
+              <h3 class="section-title">FEATURED PROJECTS</h3>
+              
+              <div class="resume-item">
+                <div class="resume-item-header">
+                  <strong>Suraksha Bandhan: Real-Time Disaster Early Warning PWA</strong>
+                  <span class="resume-date">2026</span>
+                </div>
+                <div class="resume-tech-line">JavaScript, Leaflet, PWA, Geolocation API, OpenStreetMap Overpass API</div>
+                <ul class="resume-bullets">
+                  <li>Built an offline-first Progressive Web App (PWA) delivering real-time flood risk predictions and emergency alerts across 6 Indian languages with zero external backend dependencies.</li>
+                  <li>Integrated browser Geolocation API with Leaflet spatial mapping and OpenStreetMap Overpass API to calculate real-time river flood severity based on precipitation and elevation data.</li>
+                  <li>Shortlisted in hackathon competition; implemented emergency SOS dispatch triggering pre-configured emergency services with zero latency.</li>
+                </ul>
+              </div>
+
+              <div class="resume-item">
+                <div class="resume-item-header">
+                  <strong>Exam Seating Auto-Allocator</strong>
+                  <span class="resume-date">2025</span>
+                </div>
+                <div class="resume-tech-line">Python, Flask, SQLite, Genetic Algorithms, Constraint Satisfaction (CSP)</div>
+                <ul class="resume-bullets">
+                  <li>Automated university examination hall allocation as a Constraint Satisfaction Problem (CSP) enforcing room capacity, branch mixing, and disability accommodation rules.</li>
+                  <li>Implemented genetic optimization algorithm with tailored crossover/mutation operators, cutting manual examination scheduling from 6 hours to under 15 minutes.</li>
+                  <li>Built a Flask administration portal generating official seat matrix PDFs; adopted by KIT examination cell in production across 2 consecutive semesters.</li>
+                </ul>
+              </div>
+
+              <div class="resume-item">
+                <div class="resume-item-header">
+                  <strong>FunLangLab & HindiCode: Vernacular Transpiler & Web IDE</strong>
+                  <span class="resume-date">2025</span>
+                </div>
+                <div class="resume-tech-line">JavaScript, AST Parser, Claude API, Compiler Architecture</div>
+                <ul class="resume-bullets">
+                  <li>Developed a recursive descent parser and AST-based compiler supporting native Hindi and hybrid syntax, transpiling educational programming constructs directly into executable JavaScript.</li>
+                  <li>Engineered an in-browser execution sandbox with Claude API integration for automated syntax hint generation and natural-language error translation.</li>
+                  <li>Conducted user testing with 15 students at Barabanki secondary school; 80% of novice students wrote independent loops within 30 minutes.</li>
+                </ul>
+              </div>
+
+              <div class="resume-item">
+                <div class="resume-item-header">
+                  <strong>Smart IoT Water Level & Telemetry Monitor</strong>
+                  <span class="resume-date">2024 – 2025</span>
+                </div>
+                <div class="resume-tech-line">C++, Arduino Uno, ESP8266, Blynk IoT, MQTT, HC-SR04 Ultrasonic Sensors</div>
+                <ul class="resume-bullets">
+                  <li>Architected an automated water level telemetry system using HC-SR04 ultrasonic sensors calibrated to cylindrical geometry, transmitting metrics via ESP8266 Wi-Fi over MQTT.</li>
+                  <li>Deployed production units across 2 campus hostel overhead tanks; prevented 3 overflow incidents in month one and cut water wastage by ~20%.</li>
+                </ul>
+              </div>
+            </section>
+
+            <!-- Technical Skills -->
+            <section class="resume-section">
+              <h3 class="section-title">TECHNICAL SKILLS</h3>
+              <div class="skills-grid">
+                <div class="skill-group">
+                  <strong>Languages:</strong>
+                  <span>Python, JavaScript (ES6+), C++, Java, C, SQL (MySQL, SQLite), HTML5/CSS3</span>
+                </div>
+                <div class="skill-group">
+                  <strong>Frameworks & Web:</strong>
+                  <span>Node.js, Express.js, Flask, React.js basics, RESTful APIs, Leaflet.js, Progressive Web Apps (PWA)</span>
+                </div>
+                <div class="skill-group">
+                  <strong>Embedded & Systems:</strong>
+                  <span>Arduino Uno/Nano, ESP8266/ESP32, Raspberry Pi, Sensor Interfacing (Ultrasonic, DHT, PIR), MQTT, CoAP</span>
+                </div>
+                <div class="skill-group">
+                  <strong>Tools & Databases:</strong>
+                  <span>Git, GitHub, Docker basics, Linux/Unix Shell, MongoDB, MySQL, SQLite, Firebase, Postman, VS Code</span>
+                </div>
+              </div>
+            </section>
+
+            <!-- Leadership & Recognition -->
+            <section class="resume-section">
+              <h3 class="section-title">LEADERSHIP & RECOGNITION</h3>
+              <ul class="resume-bullets">
+                <li><strong>Hackathon Shortlist (Suraksha Bandhan):</strong> Shortlisted for real-time disaster early-warning system prototype.</li>
+                <li><strong>Production Institutional Deployment:</strong> Exam Seating Auto-Allocator adopted and deployed by KIT Examination Cell.</li>
+                <li><strong>Technical Club Mentorship:</strong> Guided 40+ junior engineering students in micro-controller setup, Arduino debugging, and IoT prototyping.</li>
+              </ul>
+            </section>
+          </div>
+        </div>
       </div>
 
       <!-- Continental Filter Bar -->
       <nav class="filter-bar">
         <button class="filter-btn active" data-region="All">All Earth</button>
-        <button class="filter-btn" data-region="India">India</button>
-        <button class="filter-btn" data-region="North America">North America</button>
-        <button class="filter-btn" data-region="South America">South America</button>
-        <button class="filter-btn" data-region="Europe">Europe</button>
-        <button class="filter-btn" data-region="Africa">Africa</button>
-        <button class="filter-btn" data-region="Asia">Asia</button>
-        <button class="filter-btn" data-region="Australia">Australia</button>
-        <button class="filter-btn" data-region="Arctic">Arctic</button>
+        <button class="filter-btn" data-region="India">India Projects</button>
       </nav>
 
-      <!-- Project Modal / Side Panel -->
-      <div id="project-modal" class="modal hidden">
-        <button id="close-modal" class="close-btn">&times;</button>
-        <div class="modal-content">
-          <!-- Content dynamically injected here -->
-        </div>
-      </div>
-      
-      <!-- Instructions Tooltip -->
+      <!-- Bottom Status & Navigation Tip -->
       <div class="instructions">
-        Click on pinned locations to explore projects. Drag to rotate.
+        ✦ Click any pin or badge to inspect project • Drag & rotate Earth to orbit
       </div>
     </div>
 
-    <!-- Scripts -->
+    <!-- Main Module Script -->
     <script type="module" src="./js/main.js"></script>
   </body>
 </html>
