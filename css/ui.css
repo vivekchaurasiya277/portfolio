@@ -1,20 +1,42 @@
-/* Top Right Controls & Resume Button */
-.controls-top-right {
-  position: absolute;
-  top: 24px;
-  right: 24px;
+/* Top Header Actions On The Left */
+.header-actions-left {
   display: flex;
   align-items: center;
   gap: 12px;
-  z-index: 50;
+  margin-top: 10px;
+  pointer-events: auto;
+}
+
+.contact-btn-left {
+  background: linear-gradient(135deg, #00f0ff, #0077ff);
+  border: none;
+  color: #040810;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  padding: 9px 20px;
+  border-radius: 24px;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 0 20px rgba(0, 240, 255, 0.4);
+  display: inline-flex;
+  align-items: center;
+  pointer-events: auto;
+}
+
+.contact-btn-left:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 30px rgba(0, 240, 255, 0.7);
+  background: linear-gradient(135deg, #33f4ff, #1a8cff);
 }
 
 .resume-nav-btn {
   display: flex;
   align-items: center;
   gap: 8px;
-  background: linear-gradient(135deg, rgba(0, 240, 255, 0.15), rgba(0, 110, 255, 0.25));
-  border: 1px solid rgba(0, 240, 255, 0.5);
+  background: rgba(14, 22, 42, 0.8);
+  border: 1px solid rgba(0, 240, 255, 0.45);
   color: #ffffff;
   font-family: inherit;
   font-size: 13px;
@@ -23,52 +45,15 @@
   border-radius: 24px;
   cursor: pointer;
   transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-  box-shadow: 0 0 15px rgba(0, 240, 255, 0.2);
+  box-shadow: 0 0 15px rgba(0, 240, 255, 0.15);
+  pointer-events: auto;
 }
 
 .resume-nav-btn:hover {
-  background: linear-gradient(135deg, rgba(0, 240, 255, 0.3), rgba(0, 110, 255, 0.45));
+  background: rgba(0, 240, 255, 0.2);
   border-color: #00f0ff;
   box-shadow: 0 0 25px rgba(0, 240, 255, 0.45);
-  transform: translateY(-1px);
-}
-
-#audio-toggle {
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  color: #ffffff;
-  font-size: 16px;
-  width: 38px;
-  height: 38px;
-  border-radius: 50%;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.2s;
-}
-
-#audio-toggle:hover {
-  background: rgba(255, 255, 255, 0.15);
-  border-color: rgba(255, 255, 255, 0.3);
-}
-
-.contact-btn {
-  color: #ffffff;
-  text-decoration: none;
-  font-size: 13px;
-  font-weight: 600;
-  padding: 8px 18px;
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 24px;
-  transition: all 0.2s;
-}
-
-.contact-btn:hover {
-  background: rgba(255, 255, 255, 0.16);
-  border-color: #ffffff;
-  transform: translateY(-1px);
+  transform: translateY(-2px);
 }
 
 /* 2D Projected Project Badges on Pins */
@@ -87,7 +72,7 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  background: rgba(6, 12, 24, 0.82);
+  background: rgba(6, 12, 24, 0.85);
   backdrop-filter: blur(14px);
   border: 1px solid rgba(0, 240, 255, 0.45);
   border-radius: 20px;
@@ -142,11 +127,11 @@
 /* Right Side Showcase Panel */
 .projects-panel {
   position: absolute;
-  top: 84px;
+  top: 24px;
   right: 24px;
   bottom: 30px;
   width: 350px;
-  background: rgba(8, 14, 28, 0.78);
+  background: rgba(8, 14, 28, 0.82);
   backdrop-filter: blur(24px) saturate(180%);
   border: 1px solid rgba(0, 240, 255, 0.25);
   border-radius: 20px;
@@ -215,7 +200,7 @@
 .panel-instructions {
   font-size: 11px;
   color: #8899aa;
-  margin-bottom: 14px;
+  margin-bottom: 12px;
   line-height: 1.4;
 }
 
@@ -237,8 +222,9 @@
   border-radius: 4px;
 }
 
+/* Category Section Dividers */
 .panel-section-divider {
-  margin: 12px 0 4px 0;
+  margin: 14px 0 4px 0;
   display: flex;
   align-items: center;
 }
@@ -248,7 +234,7 @@
 }
 
 .section-badge {
-  font-size: 10.5px;
+  font-size: 10px;
   font-weight: 800;
   letter-spacing: 0.08em;
   padding: 4px 10px;
@@ -275,10 +261,10 @@
 }
 
 .panel-card {
-  background: rgba(14, 22, 42, 0.65);
+  background: rgba(14, 22, 42, 0.7);
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 14px;
-  padding: 14px;
+  padding: 13px;
   cursor: pointer;
   transition: all 0.25s ease;
   position: relative;
@@ -338,7 +324,7 @@
 .panel-card-subtitle {
   font-size: 11px;
   color: #99aabb;
-  margin-bottom: 10px;
+  margin-bottom: 8px;
   line-height: 1.35;
 }
 
@@ -346,7 +332,7 @@
   display: flex;
   flex-wrap: wrap;
   gap: 5px;
-  margin-bottom: 8px;
+  margin-bottom: 10px;
 }
 
 .panel-tag {
@@ -358,19 +344,49 @@
   border-radius: 6px;
 }
 
+.panel-card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .panel-card-action {
   font-size: 10px;
   font-weight: 700;
   color: #00f0ff;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  display: flex;
-  justify-content: flex-end;
 }
 
-/* Transparent Window Type Structure on the Globe (Project Detail Modal) */
+.panel-github-icon {
+  font-size: 10.5px;
+  font-weight: 700;
+  color: #00f0ff;
+  text-decoration: none;
+  background: rgba(0, 240, 255, 0.1);
+  border: 1px solid rgba(0, 240, 255, 0.3);
+  padding: 3px 8px;
+  border-radius: 6px;
+  transition: all 0.2s;
+  pointer-events: auto;
+}
+
+.panel-github-icon:hover {
+  background: rgba(0, 240, 255, 0.3);
+  border-color: #00f0ff;
+  color: #ffffff;
+}
+
+/* ALL MODALS: Placed at root with z-index 9999 and pointer-events: auto */
+.hidden {
+  display: none !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+/* 1. Transparent Floating Project Window on Globe */
 .glass-floating-window {
-  position: absolute;
+  position: fixed;
   top: 50%;
   left: 36px;
   transform: translateY(-50%);
@@ -378,14 +394,14 @@
   max-width: calc(100vw - 72px);
   max-height: 85vh;
   overflow-y: auto;
-  background: rgba(8, 14, 28, 0.85);
+  background: rgba(8, 14, 28, 0.88);
   backdrop-filter: blur(28px) saturate(190%);
   border: 1px solid rgba(0, 240, 255, 0.35);
   border-radius: 20px;
   box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8), 0 0 35px rgba(0, 240, 255, 0.2);
-  z-index: 40;
+  z-index: 1000;
   pointer-events: auto;
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  display: block;
 }
 
 .glass-floating-window::-webkit-scrollbar {
@@ -395,12 +411,6 @@
 .glass-floating-window::-webkit-scrollbar-thumb {
   background: rgba(0, 240, 255, 0.4);
   border-radius: 4px;
-}
-
-.glass-floating-window.hidden {
-  opacity: 0;
-  pointer-events: none;
-  transform: translateY(-50%) scale(0.92);
 }
 
 .modal-content {
@@ -423,11 +433,12 @@
   align-items: center;
   justify-content: center;
   transition: all 0.2s;
+  pointer-events: auto;
 }
 
 .close-btn:hover {
-  background: rgba(255, 50, 50, 0.2);
-  border-color: rgba(255, 50, 50, 0.5);
+  background: rgba(255, 50, 50, 0.25);
+  border-color: rgba(255, 50, 50, 0.6);
   color: #ffffff;
 }
 
@@ -556,6 +567,7 @@
 .modal-actions {
   display: flex;
   gap: 12px;
+  pointer-events: auto;
 }
 
 .project-btn-primary {
@@ -572,11 +584,14 @@
   border-radius: 12px;
   transition: all 0.2s;
   box-shadow: 0 4px 15px rgba(0, 240, 255, 0.3);
+  cursor: pointer;
+  pointer-events: auto;
 }
 
 .project-btn-primary:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 22px rgba(0, 240, 255, 0.5);
+  box-shadow: 0 6px 22px rgba(0, 240, 255, 0.55);
+  color: #000000;
 }
 
 .project-btn-secondary {
@@ -590,6 +605,7 @@
   border-radius: 12px;
   cursor: pointer;
   transition: all 0.2s;
+  pointer-events: auto;
 }
 
 .project-btn-secondary:hover {
@@ -597,27 +613,214 @@
   border-color: #ffffff;
 }
 
-/* Comprehensive Resume Modal */
+/* 2. Contact / Get In Touch Modal */
+.contact-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(4, 8, 18, 0.88);
+  backdrop-filter: blur(24px);
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  pointer-events: auto;
+}
+
+.contact-modal-card {
+  width: 620px;
+  max-width: 100%;
+  background: rgba(10, 16, 32, 0.95);
+  border: 1px solid rgba(0, 240, 255, 0.35);
+  border-radius: 20px;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.8), 0 0 40px rgba(0, 240, 255, 0.2);
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  position: relative;
+}
+
+.contact-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 14px;
+}
+
+.contact-modal-header h3 {
+  font-size: 20px;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  color: #ffffff;
+  margin-bottom: 4px;
+}
+
+.contact-modal-header p {
+  font-size: 12.5px;
+  color: #90a4b8;
+}
+
+.close-modal-round-btn {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #a0b0c0;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  font-size: 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+  pointer-events: auto;
+}
+
+.close-modal-round-btn:hover {
+  background: rgba(255, 50, 50, 0.25);
+  color: #ffffff;
+}
+
+.contact-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.contact-detail-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: rgba(16, 24, 46, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  padding: 14px 18px;
+  transition: all 0.2s;
+}
+
+.contact-detail-card:hover {
+  border-color: rgba(0, 240, 255, 0.4);
+  background: rgba(0, 240, 255, 0.08);
+}
+
+.contact-card-icon {
+  font-size: 24px;
+  flex-shrink: 0;
+}
+
+.contact-card-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.contact-card-label {
+  font-size: 11px;
+  color: #8899aa;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-weight: 700;
+}
+
+.contact-card-val {
+  font-size: 13.5px;
+  color: #ffffff;
+}
+
+.contact-card-sub {
+  font-size: 11px;
+  color: #90a4b8;
+  margin-top: 2px;
+}
+
+.contact-card-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.contact-action-btn {
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 7px 14px;
+  border-radius: 10px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.2s;
+  pointer-events: auto;
+}
+
+.contact-action-btn.primary {
+  background: linear-gradient(135deg, #00f0ff, #0077ff);
+  color: #040810;
+  border: none;
+}
+
+.contact-action-btn.primary:hover {
+  box-shadow: 0 0 15px rgba(0, 240, 255, 0.5);
+  transform: translateY(-1px);
+}
+
+.contact-action-btn.secondary {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+}
+
+.contact-action-btn.secondary:hover {
+  background: rgba(255, 255, 255, 0.18);
+}
+
+.contact-modal-footer {
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding-top: 14px;
+  display: flex;
+  justify-content: center;
+}
+
+.contact-resume-download-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(0, 240, 255, 0.12);
+  border: 1px solid rgba(0, 240, 255, 0.4);
+  color: #00f0ff;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 700;
+  padding: 10px 22px;
+  border-radius: 12px;
+  transition: all 0.2s;
+  pointer-events: auto;
+}
+
+.contact-resume-download-btn:hover {
+  background: rgba(0, 240, 255, 0.25);
+  border-color: #00f0ff;
+  box-shadow: 0 0 20px rgba(0, 240, 255, 0.4);
+}
+
+/* 3. Resume Modal */
 .resume-modal-overlay {
   position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
-  background: rgba(4, 8, 16, 0.85);
-  backdrop-filter: blur(20px);
-  z-index: 100;
+  background: rgba(4, 8, 18, 0.88);
+  backdrop-filter: blur(24px);
+  z-index: 10000;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 24px;
   pointer-events: auto;
-  transition: opacity 0.3s;
-}
-
-.resume-modal-overlay.hidden {
-  opacity: 0;
-  pointer-events: none;
 }
 
 .resume-modal-card {
@@ -631,6 +834,7 @@
   display: flex;
   flex-direction: column;
   overflow: hidden;
+  pointer-events: auto;
 }
 
 .resume-header {
@@ -676,6 +880,7 @@
   padding: 3px 10px;
   border-radius: 12px;
   transition: all 0.2s;
+  pointer-events: auto;
 }
 
 .resume-links a:hover {
@@ -702,31 +907,13 @@
   border-radius: 12px;
   transition: all 0.2s;
   box-shadow: 0 4px 15px rgba(0, 240, 255, 0.3);
+  pointer-events: auto;
 }
 
 .download-resume-btn:hover {
   transform: translateY(-1px);
   box-shadow: 0 6px 20px rgba(0, 240, 255, 0.5);
-}
-
-.close-resume-btn {
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  color: #a0b0c0;
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  font-size: 22px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.2s;
-}
-
-.close-resume-btn:hover {
-  background: rgba(255, 50, 50, 0.2);
-  color: #ffffff;
+  color: #000000;
 }
 
 .resume-scrollable-body {
@@ -914,9 +1101,6 @@
     top: auto;
     bottom: 24px;
     transform: none;
-  }
-  .glass-floating-window.hidden {
-    transform: translateY(20px) scale(0.95);
   }
   .filter-bar {
     bottom: 80px;

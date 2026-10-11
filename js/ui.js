@@ -4,22 +4,25 @@ export class UISystem {
     this.projects = [];
     
     // DOM Elements
-    this.modal = document.getElementById('project-modal');
-    this.modalContent = this.modal.querySelector('.modal-content');
-    this.closeBtn = document.getElementById('close-modal');
+    this.projectModal = document.getElementById('project-modal');
+    this.modalContent = this.projectModal ? this.projectModal.querySelector('.modal-content') : null;
+    this.closeProjectBtn = document.getElementById('close-modal');
     
     this.resumeModal = document.getElementById('resume-modal');
     this.resumeBtn = document.getElementById('resume-btn');
     this.closeResumeBtn = document.getElementById('close-resume-modal');
     
+    this.contactModal = document.getElementById('contact-modal');
+    this.contactBtn = document.getElementById('contact-btn');
+    this.closeContactBtn = document.getElementById('close-contact-modal');
+    this.copyEmailBtn = document.getElementById('copy-email-btn');
+
     this.panelToggleBtn = document.getElementById('panel-toggle-btn');
     this.projectsPanel = document.getElementById('projects-panel');
     this.projectsListContainer = document.getElementById('projects-list');
 
     this.filterBtns = document.querySelectorAll('.filter-btn');
     this.loadingScreen = document.getElementById('loading-screen');
-    this.audioToggle = document.getElementById('audio-toggle');
-    this.audioEnabled = false;
 
     this.initEvents();
   }
@@ -30,42 +33,91 @@ export class UISystem {
   }
 
   initEvents() {
-    // Close Project Modal
-    if (this.closeBtn) {
-      this.closeBtn.addEventListener('click', () => {
+    // Project Modal Close
+    if (this.closeProjectBtn) {
+      this.closeProjectBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
         this.closeModal();
       });
     }
 
-    // Resume Modal
+    // Resume Modal Open & Close
     if (this.resumeBtn) {
-      this.resumeBtn.addEventListener('click', () => {
+      this.resumeBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
         this.openResumeModal();
       });
     }
 
     if (this.closeResumeBtn) {
-      this.closeResumeBtn.addEventListener('click', () => {
+      this.closeResumeBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
         this.closeResumeModal();
       });
     }
 
-    // Projects Panel Toggle (for mobile or minimizing)
+    if (this.resumeModal) {
+      this.resumeModal.addEventListener('click', (e) => {
+        if (e.target === this.resumeModal) {
+          this.closeResumeModal();
+        }
+      });
+    }
+
+    // Contact Modal Open & Close
+    if (this.contactBtn) {
+      this.contactBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        this.openContactModal();
+      });
+    }
+
+    if (this.closeContactBtn) {
+      this.closeContactBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        this.closeContactModal();
+      });
+    }
+
+    if (this.contactModal) {
+      this.contactModal.addEventListener('click', (e) => {
+        if (e.target === this.contactModal) {
+          this.closeContactModal();
+        }
+      });
+    }
+
+    // Copy Email Button
+    if (this.copyEmailBtn) {
+      this.copyEmailBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        navigator.clipboard.writeText('vivekchaurasiya.work@gmail.com').then(() => {
+          this.copyEmailBtn.textContent = 'Copied! ✓';
+          setTimeout(() => {
+            this.copyEmailBtn.textContent = 'Copy';
+          }, 2000);
+        });
+      });
+    }
+
+    // Projects Panel Toggle (collapse/expand)
     if (this.panelToggleBtn) {
-      this.panelToggleBtn.addEventListener('click', () => {
+      this.panelToggleBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
         this.projectsPanel.classList.toggle('collapsed');
       });
     }
 
-    // Close on outside overlay click
+    // Escape Key to Close Any Open Modal
     window.addEventListener('keydown', (e) => {
       if (e.key === 'Escape') {
         this.closeModal();
         this.closeResumeModal();
+        this.closeContactModal();
       }
     });
 
-    // Filter Buttons
+    // Continental Filter Buttons
     this.filterBtns.forEach(btn => {
       btn.addEventListener('click', (e) => {
         this.filterBtns.forEach(b => b.classList.remove('active'));
@@ -75,14 +127,6 @@ export class UISystem {
         this.handleFilterClick(region);
       });
     });
-
-    // Audio Toggle
-    if (this.audioToggle) {
-      this.audioToggle.addEventListener('click', () => {
-        this.audioEnabled = !this.audioEnabled;
-        this.audioToggle.textContent = this.audioEnabled ? '🔊' : '🔇';
-      });
-    }
   }
 
   renderProjectsPanel() {
@@ -122,8 +166,9 @@ export class UISystem {
         </div>
         <p class="panel-card-subtitle">${project.subtitle || project.category || ''}</p>
         <div class="panel-card-tech">${techTags}</div>
-        <div class="panel-card-action">
-          <span>Fly on Globe &rarr;</span>
+        <div class="panel-card-footer">
+          <span class="panel-card-action">Fly on Globe &rarr;</span>
+          ${project.link ? `<a href="${project.link}" target="_blank" rel="noopener noreferrer" class="panel-github-icon" title="Open GitHub" onclick="event.stopPropagation(); window.open('${project.link}', '_blank'); return false;">GitHub ↗</a>` : ''}
         </div>
       `;
 
@@ -145,11 +190,11 @@ export class UISystem {
     if (progress) progress.textContent = '100%';
     setTimeout(() => {
       if (this.loadingScreen) this.loadingScreen.classList.add('hidden');
-    }, 400);
+    }, 300);
   }
 
   openModal(project) {
-    if (!project) return;
+    if (!project || !this.modalContent) return;
     
     // Highlight matching panel card
     document.querySelectorAll('.panel-card').forEach(c => {
@@ -161,7 +206,7 @@ export class UISystem {
 
     this.modalContent.innerHTML = `
       <div class="modal-badge-row">
-        <span class="modal-category">${project.category || 'Featured Work'}</span>
+        <span class="modal-category">${project.typeLabel || project.category || 'Featured'}</span>
         <span class="modal-year">${project.year || ''}</span>
       </div>
       <h2>${project.name}</h2>
@@ -183,23 +228,27 @@ export class UISystem {
       </div>
       
       <div class="modal-actions">
-        ${project.link ? `<a href="${project.link}" target="_blank" rel="noopener noreferrer" class="project-btn-primary">View GitHub Repository &rarr;</a>` : ''}
+        ${project.link ? `
+          <a href="${project.link}" target="_blank" rel="noopener noreferrer" class="project-btn-primary" onclick="window.open('${project.link}', '_blank'); return false;">
+            View GitHub Repository &rarr;
+          </a>` : ''}
         <button class="project-btn-secondary" id="modal-resume-trigger">View Resume</button>
       </div>
     `;
 
     const resumeBtnInModal = this.modalContent.querySelector('#modal-resume-trigger');
     if (resumeBtnInModal) {
-      resumeBtnInModal.addEventListener('click', () => {
+      resumeBtnInModal.addEventListener('click', (e) => {
+        e.stopPropagation();
         this.openResumeModal();
       });
     }
 
-    this.modal.classList.remove('hidden');
+    if (this.projectModal) this.projectModal.classList.remove('hidden');
   }
 
   closeModal() {
-    if (this.modal) this.modal.classList.add('hidden');
+    if (this.projectModal) this.projectModal.classList.add('hidden');
     document.querySelectorAll('.panel-card').forEach(c => c.classList.remove('active'));
     if (this.interactionSystem && this.interactionSystem.controls) {
       this.interactionSystem.controls.autoRotate = true;
@@ -212,6 +261,14 @@ export class UISystem {
 
   closeResumeModal() {
     if (this.resumeModal) this.resumeModal.classList.add('hidden');
+  }
+
+  openContactModal() {
+    if (this.contactModal) this.contactModal.classList.remove('hidden');
+  }
+
+  closeContactModal() {
+    if (this.contactModal) this.contactModal.classList.add('hidden');
   }
 
   handleFilterClick(region) {
