@@ -237,6 +237,43 @@
   border-radius: 4px;
 }
 
+.panel-section-divider {
+  margin: 12px 0 4px 0;
+  display: flex;
+  align-items: center;
+}
+
+.panel-section-divider:first-child {
+  margin-top: 0;
+}
+
+.section-badge {
+  font-size: 10.5px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  padding: 4px 10px;
+  border-radius: 10px;
+  display: inline-block;
+}
+
+.section-startup .section-badge {
+  color: #ffd166;
+  background: rgba(255, 209, 102, 0.12);
+  border: 1px solid rgba(255, 209, 102, 0.35);
+}
+
+.section-internship .section-badge {
+  color: #c77dff;
+  background: rgba(199, 125, 255, 0.12);
+  border: 1px solid rgba(199, 125, 255, 0.35);
+}
+
+.section-project .section-badge {
+  color: #00f0ff;
+  background: rgba(0, 240, 255, 0.12);
+  border: 1px solid rgba(0, 240, 255, 0.35);
+}
+
 .panel-card {
   background: rgba(14, 22, 42, 0.65);
   border: 1px solid rgba(255, 255, 255, 0.08);

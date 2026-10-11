@@ -89,9 +89,25 @@ export class UISystem {
     if (!this.projectsListContainer) return;
     this.projectsListContainer.innerHTML = '';
 
+    let currentSection = null;
+
     this.projects.forEach(project => {
+      const sectionKey = project.type || 'project';
+      if (sectionKey !== currentSection) {
+        currentSection = sectionKey;
+        const divider = document.createElement('div');
+        divider.className = `panel-section-divider section-${sectionKey}`;
+        
+        let label = '💻 FEATURED PROJECTS';
+        if (sectionKey === 'startup') label = '🚀 STARTUP';
+        else if (sectionKey === 'internship') label = '🛰️ INTERNSHIP';
+
+        divider.innerHTML = `<span class="section-badge">${label}</span>`;
+        this.projectsListContainer.appendChild(divider);
+      }
+
       const card = document.createElement('div');
-      card.className = 'panel-card';
+      card.className = `panel-card panel-card-${project.type || 'project'}`;
       card.dataset.projectId = project.id;
       
       const techTags = (project.tech || []).slice(0, 3).map(t => `<span class="panel-tag">${t}</span>`).join('');
@@ -112,7 +128,6 @@ export class UISystem {
       `;
 
       card.addEventListener('click', () => {
-        // Highlight active card
         document.querySelectorAll('.panel-card').forEach(c => c.classList.remove('active'));
         card.classList.add('active');
 

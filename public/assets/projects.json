@@ -1,8 +1,79 @@
 {
   "projects": [
     {
+      "id": "pradite-ai",
+      "name": "Pradite (Co-Founder)",
+      "type": "startup",
+      "typeLabel": "🚀 STARTUP",
+      "subtitle": "Zero-Knowledge BYOK AI Platform",
+      "category": "Startup • AI Security",
+      "year": "2026 - Present",
+      "description": "Co-founded zero-knowledge Bring-Your-Own-Key (BYOK) AI platform protecting developer code via client-side encryption using libsodium; drove initial developer onboarding and feedback loops. Built product distribution pipeline and community channels across student and indie developer clusters; synthesized bug reports to prioritize technical roadmap sprints.",
+      "highlights": [
+        "Co-founded zero-knowledge BYOK AI platform protecting proprietary developer code",
+        "Client-side encryption with libsodium ensures zero server-side exposure",
+        "Built developer distribution channels and continuous feedback sprint loops"
+      ],
+      "location": {
+        "name": "Silicon Valley Hub",
+        "lat": 37.7749,
+        "lng": -122.4194
+      },
+      "continent": "North America",
+      "tech": ["libsodium", "Client-Side Encryption", "Zero-Knowledge BYOK", "Node.js"],
+      "link": "https://github.com/vivekchaurasiya277"
+    },
+    {
+      "id": "india-space-academy",
+      "name": "Space Academy GIS",
+      "type": "internship",
+      "typeLabel": "🛰️ INTERNSHIP",
+      "subtitle": "Remote Sensing & Satellite Simulation",
+      "category": "Internship • Remote Sensing",
+      "year": "May 2025 – July 2025",
+      "description": "Engineered client-side simulation engines for Vegetation Condition Index (VCI) drought severity mapping, Urban Heat Island analysis, and watershed prioritization using Digital Elevation Models (DEM). Translated satellite imagery processing algorithms into lightweight, dependency-free JavaScript modules packaged as single HTML files for offline use in low-bandwidth environments.",
+      "highlights": [
+        "Simulation engines for VCI drought mapping & Urban Heat Island analysis",
+        "Watershed prioritization calculated using Digital Elevation Models (DEM)",
+        "Packaged satellite algorithms into dependency-free offline JavaScript modules"
+      ],
+      "location": {
+        "name": "Space Tech Node, Paris",
+        "lat": 48.8566,
+        "lng": 2.3522
+      },
+      "continent": "Europe",
+      "tech": ["GIS", "Remote Sensing", "Digital Elevation Models", "VCI", "JavaScript"],
+      "link": "https://github.com/vivekchaurasiya277"
+    },
+    {
+      "id": "nasa-astronaut-health",
+      "name": "NASA Astronaut Health AI",
+      "type": "project",
+      "typeLabel": "💻 PROJECT",
+      "subtitle": "NASA Space Apps Deep Space Telemetry",
+      "category": "Space AI & Telemetry",
+      "year": "2026",
+      "description": "Engineered by Team AI4WORLD for the NASA Space Apps Challenge (Lucknow) solving the astronaut health monitoring challenge. Utilizes artificial intelligence, machine learning, and biometric telemetry analytics to track vital metrics, forecast fatigue and health degradation, and safeguard crew members during long-duration deep space exploration missions.",
+      "highlights": [
+        "NASA Space Apps Challenge project (Team AI4WORLD, Lucknow)",
+        "Real-time biometric telemetry evaluation and vital-sign forecasting",
+        "Deep space predictive analytics robust against communication latency"
+      ],
+      "location": {
+        "name": "Cape Canaveral Spaceport",
+        "lat": 28.5729,
+        "lng": -80.6490
+      },
+      "continent": "North America",
+      "tech": ["Python", "Machine Learning", "Data Analytics", "NASA Telemetry", "Bio-Sensors"],
+      "link": "https://github.com/vivekchaurasiya277/nasahealth-application-"
+    },
+    {
       "id": "suraksha-bandhan",
       "name": "Suraksha Bandhan",
+      "type": "project",
+      "typeLabel": "💻 PROJECT",
       "subtitle": "Real-Time Disaster Early Warning PWA",
       "category": "Disaster Tech & Geospatial",
       "year": "2026",
@@ -14,7 +85,7 @@
         "National Hackathon Shortlist recognition"
       ],
       "location": {
-        "name": "Ganga Basin Node",
+        "name": "Ganga Basin Node, India",
         "lat": 26.4499,
         "lng": 80.3319
       },
@@ -23,50 +94,56 @@
       "link": "https://github.com/vivekchaurasiya277/Suraksha-Bandhan"
     },
     {
-      "id": "pradite-ai",
-      "name": "Pradite (Co-Founder)",
-      "subtitle": "Zero-Knowledge BYOK AI Platform",
-      "category": "Cryptography & AI Infrastructure",
-      "year": "2026 - Present",
-      "description": "Co-founded zero-knowledge Bring-Your-Own-Key (BYOK) AI platform protecting developer code via client-side encryption using libsodium; drove initial developer onboarding and feedback loops. Built product distribution pipeline and community channels across student and indie developer clusters; synthesized bug reports to prioritize technical roadmap sprints.",
+      "id": "shortroute",
+      "name": "ShortRoute 3D Transit",
+      "type": "project",
+      "typeLabel": "💻 PROJECT",
+      "subtitle": "Multi-Modal Travel Optimization Engine",
+      "category": "3D Transit & Routing",
+      "year": "2026",
+      "description": "Next-generation travel routing engine designed to seamlessly calculate the most efficient, cheapest, and fastest journeys across cities and states. Built with an immersive 3D-parallax interface, it dynamically combines various modes of transport—walking, autos, metro, buses, trains, and cabs—into single cohesive itineraries with live Pareto route tradeoffs.",
       "highlights": [
-        "Co-founded zero-knowledge BYOK AI platform protecting proprietary developer code",
-        "Client-side encryption with libsodium ensures zero server-side exposure",
-        "Built developer distribution channels and continuous feedback sprint loops"
+        "Multi-modal route optimizer combining metro, bus, cab, train & walking",
+        "Pareto cost and latency route trade-off calculations",
+        "Interactive 3D-parallax interface designed for next-gen mobility"
       ],
       "location": {
-        "name": "Pacific West Node",
-        "lat": 37.7749,
-        "lng": -122.4194
-      },
-      "continent": "North America",
-      "tech": ["libsodium", "Client-Side Encryption", "Zero-Knowledge BYOK", "Node.js"],
-      "link": "https://github.com/vivekchaurasiya277"
-    },
-    {
-      "id": "india-space-academy",
-      "name": "Space Academy GIS",
-      "subtitle": "Remote Sensing & Satellite Simulation",
-      "category": "GIS & Space Technology",
-      "year": "2025",
-      "description": "Engineered client-side simulation engines for Vegetation Condition Index (VCI) drought severity mapping, Urban Heat Island analysis, and watershed prioritization using Digital Elevation Models (DEM). Translated satellite imagery processing algorithms into lightweight, dependency-free JavaScript modules packaged as single HTML files for offline use in low-bandwidth environments.",
-      "highlights": [
-        "Simulation engines for VCI drought mapping & Urban Heat Island analysis",
-        "Watershed prioritization calculated using Digital Elevation Models (DEM)",
-        "Packaged satellite algorithms into dependency-free offline JavaScript modules"
-      ],
-      "location": {
-        "name": "Atlantic European Node",
-        "lat": 52.5200,
-        "lng": 13.4050
+        "name": "Mobility Lab, London",
+        "lat": 51.5074,
+        "lng": -0.1278
       },
       "continent": "Europe",
-      "tech": ["GIS", "Remote Sensing", "Digital Elevation Models", "VCI", "JavaScript"],
-      "link": "https://github.com/vivekchaurasiya277"
+      "tech": ["JavaScript", "3D Parallax", "Routing Algorithms", "Transit APIs", "Node.js"],
+      "link": "https://github.com/vivekchaurasiya277/ShortRoute"
+    },
+    {
+      "id": "facesync-ai",
+      "name": "FaceSync AI Attendance",
+      "type": "project",
+      "typeLabel": "💻 PROJECT",
+      "subtitle": "Geofenced Deep Learning Verification",
+      "category": "Computer Vision & Deep Learning",
+      "year": "2026",
+      "description": "State-of-the-art AI Face Attendance System built for modern educational institutions and corporate environments. Utilizes deep learning facial embedding matching with high precision, enforces strict geographical constraints with geolocation math, and provides an interactive premium glassmorphism administrative dashboard.",
+      "highlights": [
+        "Deep learning facial embedding recognition preventing photo spoofing",
+        "Geofencing mathematical constraints eliminating proxy attendance",
+        "Real-time glassmorphic attendance dashboard & analytics"
+      ],
+      "location": {
+        "name": "Vision AI Lab, Tokyo",
+        "lat": 35.6762,
+        "lng": 139.6503
+      },
+      "continent": "Asia",
+      "tech": ["Python", "OpenCV", "Deep Learning", "Face Recognition", "Geolocation Math"],
+      "link": "https://github.com/vivekchaurasiya277/FaceSync-AI-Powered-Face-Attendance-System.-"
     },
     {
       "id": "exam-seating-allocator",
       "name": "Exam Seating Allocator",
+      "type": "project",
+      "typeLabel": "💻 PROJECT",
       "subtitle": "Genetic Optimization & Constraint Solving",
       "category": "AI & Optimization",
       "year": "2025",
@@ -78,21 +155,23 @@
         "Flask administration dashboard generating official seat matrix PDFs"
       ],
       "location": {
-        "name": "Oceania South Node",
+        "name": "Optimization Node, Sydney",
         "lat": -33.8688,
         "lng": 151.2093
       },
       "continent": "Australia",
       "tech": ["Python", "Flask", "SQLite", "Genetic Algorithms", "CSP"],
-      "link": "https://github.com/vivekchaurasiya277"
+      "link": "https://github.com/vivekchaurasiya277/gatecomplete"
     },
     {
       "id": "funlanglab-hindicode",
       "name": "FunLangLab & HindiCode",
+      "type": "project",
+      "typeLabel": "💻 PROJECT",
       "subtitle": "Vernacular Transpiler & Web IDE",
       "category": "Compilers & AI EdTech",
       "year": "2025",
-      "description": "Developed a recursive descent parser and AST-based compiler supporting native Hindi and hybrid syntax, transpiling educational programming constructs directly into executable JavaScript. Engineered an in-browser execution sandbox with Claude API integration for automated syntax hint generation and natural-language error translation. Conducted user testing with 15 students at Barabanki secondary school; 80% of novice students wrote independent loops within 30 minutes.",
+      "description": "Developed a recursive descent parser and AST-based compiler supporting native Hindi and hybrid syntax, transpiling educational programming constructs directly into executable JavaScript. Engineered an in-browser execution sandbox with Claude API integration for automated syntax hint generation and natural-language error translation. Tested with 15 students at Barabanki secondary school; 80% of novice students wrote independent loops within 30 minutes.",
       "highlights": [
         "Recursive descent parser & AST compiler transpiling Hindi constructs to JavaScript",
         "In-browser sandbox with Claude API natural-language error translations",
@@ -100,7 +179,7 @@
         "Democratizing programming literacy for non-English speakers"
       ],
       "location": {
-        "name": "Latin America Node",
+        "name": "Vernacular Code Lab, Rio",
         "lat": -22.9068,
         "lng": -43.1729
       },
@@ -111,6 +190,8 @@
     {
       "id": "iot-water-telemetry",
       "name": "Smart IoT Telemetry",
+      "type": "project",
+      "typeLabel": "💻 PROJECT",
       "subtitle": "Ultrasonic Tank Monitoring System",
       "category": "Embedded Systems & IoT",
       "year": "2024 - 2025",
@@ -122,7 +203,7 @@
         "Prevented 3 overflow incidents and reduced campus water wastage by ~20%"
       ],
       "location": {
-        "name": "African Rift Node",
+        "name": "Telemetry Node, Nairobi",
         "lat": -1.2921,
         "lng": 36.8219
       },
@@ -133,6 +214,8 @@
     {
       "id": "land-registry-blockchain",
       "name": "Decentralized Land Registry",
+      "type": "project",
+      "typeLabel": "💻 PROJECT",
       "subtitle": "Ethereum Smart Contract Platform",
       "category": "Blockchain & Web3",
       "year": "2024",
@@ -143,13 +226,36 @@
         "Web3.js wallet authentication and verified decentralized state"
       ],
       "location": {
-        "name": "East Coast Node",
+        "name": "Web3 Financial Hub, New York",
         "lat": 40.7128,
         "lng": -74.0060
       },
       "continent": "North America",
       "tech": ["Solidity", "Ethereum", "Web3.js", "Smart Contracts", "React"],
       "link": "https://github.com/vivekchaurasiya277/Decentralized-Land-Registry-platform"
+    },
+    {
+      "id": "plant-doctor-ai",
+      "name": "Plant Doctor AI",
+      "type": "project",
+      "typeLabel": "💻 PROJECT",
+      "subtitle": "Crop Pathology & Vision Diagnostics",
+      "category": "Agri-Tech & Computer Vision",
+      "year": "2024",
+      "description": "Deep learning agricultural diagnosis system utilizing convolutional neural networks to classify leaf fungal and bacterial pathologies from field smartphone photos, providing instant targeted treatment remedies for farmers.",
+      "highlights": [
+        "CNN image classification model diagnosing multi-class plant diseases",
+        "Actionable treatment remedies for rural farming communities",
+        "Lightweight mobile-optimized inference"
+      ],
+      "location": {
+        "name": "Agri-Tech Node, Cape Town",
+        "lat": -33.9249,
+        "lng": 18.4241
+      },
+      "continent": "Africa",
+      "tech": ["Python", "TensorFlow", "Computer Vision", "Flask", "OpenCV"],
+      "link": "https://github.com/vivekchaurasiya277/Plant-Doctor"
     }
   ]
 }
