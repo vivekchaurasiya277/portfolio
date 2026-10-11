@@ -1,0 +1,200 @@
+{
+  "projects": [
+    {
+      "id": "india-ecommerce",
+      "name": "BharatMart E-Commerce",
+      "description": "A high-performance, scalable e-commerce platform built for the Indian market, supporting regional languages and UPI payments.",
+      "location": {
+        "name": "New Delhi, India",
+        "lat": 28.6139,
+        "lng": 77.2090
+      },
+      "continent": "India",
+      "tech": ["React", "Node.js", "MongoDB", "Razorpay"],
+      "link": "https://github.com/yourname/bharatmart",
+      "image": ""
+    },
+    {
+      "id": "india-fintech",
+      "name": "FinNiti Analytics",
+      "description": "AI-driven financial analytics dashboard for stock market forecasting and portfolio management.",
+      "location": {
+        "name": "Mumbai, India",
+        "lat": 19.0760,
+        "lng": 72.8777
+      },
+      "continent": "India",
+      "tech": ["Python", "Django", "Vue.js", "Pandas"],
+      "link": "https://github.com/yourname/finniti",
+      "image": ""
+    },
+    {
+      "id": "india-health",
+      "name": "AyuCare Telemedicine",
+      "description": "A robust telemedicine app connecting rural patients with urban doctors via WebRTC video calls.",
+      "location": {
+        "name": "Bangalore, India",
+        "lat": 12.9716,
+        "lng": 77.5946
+      },
+      "continent": "India",
+      "tech": ["Next.js", "WebRTC", "PostgreSQL", "Tailwind"],
+      "link": "https://github.com/yourname/ayucare",
+      "image": ""
+    },
+    {
+      "id": "dsa-tracker",
+      "name": "DSA Tracker Pro",
+      "description": "Comprehensive data structures & algorithms progress tracker",
+      "location": {
+        "name": "Arctic / Greenland",
+        "lat": 71.7069,
+        "lng": -42.6043
+      },
+      "continent": "arctic",
+      "tech": ["React", "TypeScript", "Node.js"],
+      "link": "https://github.com/you/dsa-tracker",
+      "image": ""
+    },
+    {
+      "id": "mastermind",
+      "name": "MasterMind",
+      "description": "AI-powered code review & mentorship platform",
+      "location": {
+        "name": "Europe",
+        "lat": 48.8566,
+        "lng": 2.3522
+      },
+      "continent": "europe",
+      "tech": ["Next.js", "OpenAI", "PostgreSQL"],
+      "link": "https://github.com/you/mastermind",
+      "image": ""
+    },
+    {
+      "id": "mocktest",
+      "name": "MockTest365",
+      "description": "Daily mock test platform for competitive exams",
+      "location": {
+        "name": "Africa",
+        "lat": -1.2921,
+        "lng": 36.8219
+      },
+      "continent": "africa",
+      "tech": ["Vue.js", "Firebase", "Tailwind"],
+      "link": "https://github.com/you/mocktest365",
+      "image": ""
+    },
+    {
+      "id": "body-planner",
+      "name": "Body Planner",
+      "description": "AI fitness & nutrition planning application",
+      "location": {
+        "name": "North America",
+        "lat": 37.7749,
+        "lng": -122.4194
+      },
+      "continent": "north-america",
+      "tech": ["React Native", "TensorFlow.js", "AWS"],
+      "link": "https://github.com/you/body-planner",
+      "image": ""
+    },
+    {
+      "id": "asian-market",
+      "name": "Market Flow",
+      "description": "Real-time stock tracking dashboard for Asian markets",
+      "location": {
+        "name": "Asia",
+        "lat": 35.6762,
+        "lng": 139.6503
+      },
+      "continent": "asia",
+      "tech": ["Svelte", "WebSockets", "D3.js"],
+      "link": "https://github.com/you/market-flow",
+      "image": ""
+    },
+    {
+      "id": "aussie-surf",
+      "name": "Surf Forecast",
+      "description": "Accurate surf and tide predictions for coastal regions",
+      "location": {
+        "name": "Australia",
+        "lat": -33.8688,
+        "lng": 151.2093
+      },
+      "continent": "australia",
+      "tech": ["React", "GraphQL", "Python"],
+      "link": "https://github.com/you/surf-forecast",
+      "image": ""
+    },
+    {
+      "id": "amazon-vision",
+      "name": "Forest Watch",
+      "description": "Satellite imagery analysis for deforestation tracking",
+      "location": {
+        "name": "South America",
+        "lat": -3.1190,
+        "lng": -60.0217
+      },
+      "continent": "south-america",
+      "tech": ["Python", "TensorFlow", "Google Earth Engine"],
+      "link": "https://github.com/you/forest-watch",
+      "image": ""
+    },
+    {
+      "id": "japan-transit",
+      "name": "Tokyo Transit Map",
+      "description": "Interactive real-time visualization of the Tokyo subway system.",
+      "location": {
+        "name": "Tokyo, Japan",
+        "lat": 35.6895,
+        "lng": 139.6917
+      },
+      "continent": "asia",
+      "tech": ["WebGL", "TypeScript", "D3.js"],
+      "link": "https://github.com/you/tokyo-transit",
+      "image": ""
+    },
+    {
+      "id": "euro-climate",
+      "name": "Euro Climate Tracker",
+      "description": "Tracking historical climate data and carbon emissions across European nations.",
+      "location": {
+        "name": "Berlin, Germany",
+        "lat": 52.5200,
+        "lng": 13.4050
+      },
+      "continent": "europe",
+      "tech": ["Vue.js", "Node.js", "PostGIS"],
+      "link": "https://github.com/you/euro-climate",
+      "image": ""
+    },
+    {
+      "id": "brazil-logistics",
+      "name": "Logisys BR",
+      "description": "Route optimization and logistics tracking for freight networks in Brazil.",
+      "location": {
+        "name": "São Paulo, Brazil",
+        "lat": -23.5505,
+        "lng": -46.6333
+      },
+      "continent": "south-america",
+      "tech": ["Angular", "Google Maps API", "Go"],
+      "link": "https://github.com/you/logisys-br",
+      "image": ""
+    },
+    {
+      "id": "point-nemo-station",
+      "name": "Nemo Oceanic Station",
+      "description": "A deep-sea research outpost tracking marine life and satellite debris in the most remote location on Earth.",
+      "location": {
+        "name": "Point Nemo (Oceanic Pole of Inaccessibility)",
+        "lat": -48.8767,
+        "lng": -123.3933
+      },
+      "continent": "all",
+      "tech": ["Python", "Satellite API", "React", "WebGL"],
+      "link": "https://github.com/you/point-nemo",
+      "image": ""
+    }
+  ]
+}

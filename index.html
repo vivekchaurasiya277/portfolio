@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Interactive 3D Earth Portfolio</title>
+    
+    <!-- Styles -->
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <script type="module" crossorigin src="./assets/index-Y6ei4gqY.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-DV-vrxKk.css">
+  </head>
+  <body>
+    <!-- Background Canvas for 3D Earth -->
+    <div id="canvas-container"></div>
+    
+    <!-- Loading Screen -->
+    <div id="loading-screen" class="loading-active">
+      <div class="loading-ring"></div>
+      <div class="loading-text">INITIALIZING...</div>
+      <div class="loading-progress">0%</div>
+    </div>
+
+    <!-- UI Overlay -->
+    <div id="ui-layer">
+      <!-- Country Labels Container -->
+      <div id="country-labels-container"></div>
+      
+      <!-- Header -->
+      <header class="header">
+        <h1>VIVEK CHAURASIYA</h1>
+        <p>Interactive 3D Earth Portfolio</p>
+      </header>
+      
+      <!-- Top Right Controls -->
+      <div class="controls-top-right">
+        <button id="audio-toggle" title="Toggle Audio">🔊</button>
+        <a href="#contact" class="contact-btn">say hello &rarr;</a>
+      </div>
+
+      <!-- Continental Filter Bar -->
+      <nav class="filter-bar">
+        <button class="filter-btn active" data-region="All">All Earth</button>
+        <button class="filter-btn" data-region="India">India</button>
+        <button class="filter-btn" data-region="North America">North America</button>
+        <button class="filter-btn" data-region="South America">South America</button>
+        <button class="filter-btn" data-region="Europe">Europe</button>
+        <button class="filter-btn" data-region="Africa">Africa</button>
+        <button class="filter-btn" data-region="Asia">Asia</button>
+        <button class="filter-btn" data-region="Australia">Australia</button>
+        <button class="filter-btn" data-region="Arctic">Arctic</button>
+      </nav>
+
+      <!-- Project Modal / Side Panel -->
+      <div id="project-modal" class="modal hidden">
+        <button id="close-modal" class="close-btn">&times;</button>
+        <div class="modal-content">
+          <!-- Content dynamically injected here -->
+        </div>
+      </div>
+      
+      <!-- Instructions Tooltip -->
+      <div class="instructions">
+        Click on pinned locations to explore projects. Drag to rotate.
+      </div>
+    </div>
+
+    <!-- Scripts -->
+  </body>
+</html>
