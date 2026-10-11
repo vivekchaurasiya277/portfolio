@@ -14,7 +14,7 @@
         "National Hackathon Shortlist recognition"
       ],
       "location": {
-        "name": "Kanpur, India",
+        "name": "Ganga River Basin, India",
         "lat": 26.4499,
         "lng": 80.3319
       },
@@ -23,8 +23,50 @@
       "link": "https://github.com/vivekchaurasiya277/Suraksha-Bandhan"
     },
     {
+      "id": "pradite-ai",
+      "name": "Pradite (Co-Founder)",
+      "subtitle": "Zero-Knowledge BYOK AI Platform",
+      "category": "Cryptography & AI Infrastructure",
+      "year": "2026 - Present",
+      "description": "Co-founded zero-knowledge Bring-Your-Own-Key (BYOK) AI platform protecting developer code via client-side encryption using libsodium; drove initial developer onboarding and feedback loops. Built product distribution pipeline and community channels across student and indie developer clusters; synthesized bug reports to prioritize technical roadmap sprints.",
+      "highlights": [
+        "Co-founded zero-knowledge BYOK AI platform protecting proprietary developer code",
+        "Client-side encryption with libsodium ensures zero server-side exposure",
+        "Built developer distribution channels and continuous feedback sprint loops"
+      ],
+      "location": {
+        "name": "Silicon Valley, California",
+        "lat": 37.7749,
+        "lng": -122.4194
+      },
+      "continent": "North America",
+      "tech": ["libsodium", "Client-Side Encryption", "Zero-Knowledge BYOK", "Node.js"],
+      "link": "https://github.com/vivekchaurasiya277"
+    },
+    {
+      "id": "india-space-academy",
+      "name": "Space Academy GIS",
+      "subtitle": "Remote Sensing & Satellite Simulation",
+      "category": "GIS & Space Technology",
+      "year": "2025",
+      "description": "Engineered client-side simulation engines for Vegetation Condition Index (VCI) drought severity mapping, Urban Heat Island analysis, and watershed prioritization using Digital Elevation Models (DEM). Translated satellite imagery processing algorithms into lightweight, dependency-free JavaScript modules packaged as single HTML files for offline use in low-bandwidth environments.",
+      "highlights": [
+        "Simulation engines for VCI drought mapping & Urban Heat Island analysis",
+        "Watershed prioritization calculated using Digital Elevation Models (DEM)",
+        "Packaged satellite algorithms into dependency-free offline JavaScript modules"
+      ],
+      "location": {
+        "name": "Space & Satellite Center, Paris",
+        "lat": 48.8566,
+        "lng": 2.3522
+      },
+      "continent": "Europe",
+      "tech": ["GIS", "Remote Sensing", "Digital Elevation Models", "VCI", "JavaScript"],
+      "link": "https://github.com/vivekchaurasiya277"
+    },
+    {
       "id": "exam-seating-allocator",
-      "name": "Exam Seating Auto-Allocator",
+      "name": "Exam Seating Allocator",
       "subtitle": "Genetic Optimization & Constraint Solving",
       "category": "AI & Optimization",
       "year": "2025",
@@ -36,11 +78,11 @@
         "Flask administration dashboard generating official seat matrix PDFs"
       ],
       "location": {
-        "name": "KIT Campus, Prayagraj / Kanpur",
-        "lat": 25.4358,
-        "lng": 81.8463
+        "name": "University Lab, Sydney",
+        "lat": -33.8688,
+        "lng": 151.2093
       },
-      "continent": "India",
+      "continent": "Australia",
       "tech": ["Python", "Flask", "SQLite", "Genetic Algorithms", "CSP"],
       "link": "https://github.com/vivekchaurasiya277"
     },
@@ -58,17 +100,17 @@
         "Democratizing programming literacy for non-English speakers"
       ],
       "location": {
-        "name": "Barabanki / Lucknow, India",
-        "lat": 26.8467,
-        "lng": 80.9462
+        "name": "Language & AST Lab, Tokyo",
+        "lat": 35.6762,
+        "lng": 139.6503
       },
-      "continent": "India",
+      "continent": "Asia",
       "tech": ["JavaScript", "AST Parser", "Claude API", "Compiler Design"],
       "link": "https://github.com/vivekchaurasiya277/codeguru"
     },
     {
       "id": "iot-water-telemetry",
-      "name": "Smart IoT Water Telemetry",
+      "name": "Smart IoT Telemetry",
       "subtitle": "Ultrasonic Tank Monitoring System",
       "category": "Embedded Systems & IoT",
       "year": "2024 - 2025",
@@ -80,54 +122,12 @@
         "Prevented 3 overflow incidents and reduced campus water wastage by ~20%"
       ],
       "location": {
-        "name": "Hostel Overhead Tanks, Varanasi",
-        "lat": 25.3176,
-        "lng": 82.9739
+        "name": "Water IoT Outpost, Nairobi",
+        "lat": -1.2921,
+        "lng": 36.8219
       },
-      "continent": "India",
+      "continent": "Africa",
       "tech": ["C++", "Arduino Uno", "ESP8266", "Blynk IoT", "MQTT", "HC-SR04"],
-      "link": "https://github.com/vivekchaurasiya277"
-    },
-    {
-      "id": "pradite-ai",
-      "name": "Pradite (Co-Founder)",
-      "subtitle": "Zero-Knowledge BYOK AI Platform",
-      "category": "Cryptography & AI Infrastructure",
-      "year": "2026 - Present",
-      "description": "Co-founded zero-knowledge Bring-Your-Own-Key (BYOK) AI platform protecting developer code via client-side encryption using libsodium; drove initial developer onboarding and feedback loops. Built product distribution pipeline and community channels across student and indie developer clusters; synthesized bug reports to prioritize technical roadmap sprints.",
-      "highlights": [
-        "Co-founded zero-knowledge BYOK AI platform protecting proprietary developer code",
-        "Client-side encryption with libsodium ensures zero server-side exposure",
-        "Built developer distribution channels and continuous feedback sprint loops"
-      ],
-      "location": {
-        "name": "Mumbai Tech Hub, India",
-        "lat": 19.0760,
-        "lng": 72.8777
-      },
-      "continent": "India",
-      "tech": ["libsodium", "Client-Side Encryption", "Zero-Knowledge BYOK", "Node.js"],
-      "link": "https://github.com/vivekchaurasiya277"
-    },
-    {
-      "id": "india-space-academy",
-      "name": "India Space Academy GIS",
-      "subtitle": "Remote Sensing & Satellite Simulation",
-      "category": "GIS & Space Technology",
-      "year": "2025",
-      "description": "Engineered client-side simulation engines for Vegetation Condition Index (VCI) drought severity mapping, Urban Heat Island analysis, and watershed prioritization using Digital Elevation Models (DEM). Translated satellite imagery processing algorithms into lightweight, dependency-free JavaScript modules packaged as single HTML files for offline use in low-bandwidth environments.",
-      "highlights": [
-        "Simulation engines for VCI drought mapping & Urban Heat Island analysis",
-        "Watershed prioritization calculated using Digital Elevation Models (DEM)",
-        "Packaged satellite algorithms into dependency-free offline JavaScript modules"
-      ],
-      "location": {
-        "name": "ISRO Space Center, Bengaluru",
-        "lat": 12.9716,
-        "lng": 77.5946
-      },
-      "continent": "India",
-      "tech": ["GIS", "Remote Sensing", "Digital Elevation Models", "VCI", "JavaScript"],
       "link": "https://github.com/vivekchaurasiya277"
     },
     {
@@ -143,11 +143,11 @@
         "Web3.js wallet authentication and verified decentralized state"
       ],
       "location": {
-        "name": "New Delhi Tech Center, India",
-        "lat": 28.6139,
-        "lng": 77.2090
+        "name": "Crypto Hub, New York",
+        "lat": 40.7128,
+        "lng": -74.0060
       },
-      "continent": "India",
+      "continent": "North America",
       "tech": ["Solidity", "Ethereum", "Web3.js", "Smart Contracts", "React"],
       "link": "https://github.com/vivekchaurasiya277/Decentralized-Land-Registry-platform"
     }

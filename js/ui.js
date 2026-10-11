@@ -203,7 +203,11 @@ export class UISystem {
     if (!this.interactionSystem) return;
 
     const regionCoords = {
-      'India': { lat: 22.5, lng: 80.0, zoom: 120 },
+      'Asia': { lat: 28.0, lng: 95.0, zoom: 140 },
+      'North America': { lat: 38.0, lng: -98.0, zoom: 150 },
+      'Europe': { lat: 48.0, lng: 12.0, zoom: 140 },
+      'Australia': { lat: -25.0, lng: 135.0, zoom: 150 },
+      'Africa': { lat: 2.0, lng: 25.0, zoom: 150 },
       'All': { lat: 20, lng: 30, zoom: 250 }
     };
 
