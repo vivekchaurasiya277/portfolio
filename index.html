@@ -1,335 +1,628 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vivek Chaurasiya — Interactive 3D Earth Portfolio</title>
-    
-    <!-- Styles -->
-    <link rel="stylesheet" href="./css/main.css" />
-    <link rel="stylesheet" href="./css/globe.css" />
-    <link rel="stylesheet" href="./css/ui.css" />
-    
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-  </head>
-  <body>
-    <!-- 3D Earth WebGL Canvas -->
-    <div id="canvas-container"></div>
-    
-    <!-- Loading Screen -->
-    <div id="loading-screen" class="loading-active">
-      <div class="loading-ring"></div>
-      <div class="loading-text">INITIALIZING 3D EARTH & SOLAR ENVIRONMENT...</div>
-      <div class="loading-progress">0%</div>
-    </div>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#1c2b2e">
+<title>Vivek Chaurasiya Portfolio</title>
+<meta name="description" content="Portfolio of Vivek Chaurasiya : Co-Founder at Pradite, Remote Sensing & GIS at India Space Academy, and B.Tech AI & ML.">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="./css/main.css">
+<script src="/tree-lib.js"></script>
+</head>
+<body>
+<div id="lvh" aria-hidden="true"></div>
 
-    <!-- UI Overlay Layer (HUD) -->
-    <div id="ui-layer">
-      <!-- 2D Projected Project Badges on Pins -->
-      <div id="project-labels-container"></div>
+<!-- 3D Scenic WebGL Canvas -->
+<canvas id="gl" role="img" aria-label="An interactive 3D digital elevation model and geospatial constellation network"></canvas>
+
+<!-- SVG Organic Dappled Filter -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <filter id="leafy">
+    <feTurbulence type="fractalNoise" baseFrequency="0.016 0.028" numOctaves="2" seed="4" result="n"/>
+    <feDisplacementMap in="SourceGraphic" in2="n" scale="80"/>
+  </filter>
+</svg>
+
+<div id="grain" aria-hidden="true"></div>
+<div id="boot" aria-hidden="true"><span class="bw"><i style="--i:0">v</i><i style="--i:1">i</i><i style="--i:2">v</i><i style="--i:3">e</i><i style="--i:4">k</i></span></div>
+
+<!-- Top Navigation -->
+<nav id="main-nav">
+  <a href="#" class="wordmark">Vivek Chaurasiya</a>
+  <div class="nav-actions">
+    <button id="view-toggle-btn" class="nav-btn-toggle" aria-label="Toggle Plain or Cinematic view">
+      <span class="t">Plain view</span>
+    </button>
+    <button id="nav-resume-btn" class="nav-btn-secondary" aria-label="Open Resume Dossier">
+      <span class="t">Resume</span><em>↗</em>
+    </button>
+    <a href="#book" class="nav-btn-primary" aria-label="Navigate to contact section">
+      <span class="t">Let's talk</span><em>→</em>
+    </a>
+  </div>
+</nav>
+
+<main id="scroll">
+  <!-- HERO SECTION -->
+  <section class="panel left scrim">
+    <div class="wrap">
+      <p class="display">From orbital observation to client-side cryptography.</p>
+      <h1 class="lead reveal d2">Vivek Chaurasiya builds full-stack systems, geospatial intelligence engines and zero-knowledge AI architectures.</h1>
+    </div>
+    <p class="scrollcue reveal d3"><span>Scroll to traverse<i>↓</i></span></p>
+  </section>
+
+  <!-- SECTION 1: WHAT I DO (Three doors) -->
+  <section class="panel left scrim">
+    <div class="wrap">
+      <span class="eyebrow reveal">what I do</span>
+      <h2 class="reveal d1">Three things, done properly.</h2>
+      <div class="doors" id="doors">
+        <!-- Door 1 -->
+        <div class="door glass reveal d1" style="--gd:0s">
+          <span class="sheen"><i></i></span>
+          <div class="dhead">
+            <svg class="dots" viewBox="0 0 42 42" aria-hidden="true">
+              <g fill="#e6c890">
+                <circle cx="21" cy="6" r="2.5"/><circle cx="35.3" cy="16.4" r="2.5"/><circle cx="29.8" cy="33.1" r="2.5"/>
+                <circle cx="12.2" cy="33.1" r="2.5"/><circle cx="6.7" cy="16.4" r="2.5"/>
+                <circle cx="24.8" cy="15.7" r="1.5" opacity=".75"/><circle cx="27.2" cy="23" r="1.5" opacity=".75"/>
+                <circle cx="21" cy="27.5" r="1.5" opacity=".75"/><circle cx="14.8" cy="23" r="1.5" opacity=".75"/>
+                <circle cx="17.2" cy="15.7" r="1.5" opacity=".75"/><circle cx="21" cy="20.6" r="1.1" opacity=".4"/>
+              </g>
+            </svg>
+            <h3>Web & Systems</h3>
+          </div>
+          <p class="dlede">Fast, offline-first and reliable.</p>
+          <ul>
+            <li>Progressive Web Apps (PWAs) & distributed APIs</li>
+            <li>Standard web primitives and clean DOM APIs without framework bloat</li>
+            <li>Offline service workers built for low-bandwidth connections</li>
+            <li>In production for college exam halls and academic portals</li>
+          </ul>
+        </div>
+
+        <!-- Door 2 -->
+        <div class="door glass reveal d2" style="--gd:-6s">
+          <span class="sheen"><i></i></span>
+          <div class="dhead">
+            <svg class="dots" viewBox="0 0 42 42" aria-hidden="true">
+              <g fill="#e6c890">
+                <circle cx="21" cy="7" r="2.5" opacity=".9"/><circle cx="15" cy="13" r="1.8" opacity=".7"/><circle cx="27" cy="13" r="1.8" opacity=".7"/>
+                <circle cx="21" cy="15" r="3" opacity=".95"/><circle cx="13" cy="21" r="2.3" opacity=".8"/><circle cx="29" cy="21" r="2.3" opacity=".8"/>
+                <circle cx="21" cy="24" r="1.7" opacity=".65"/><circle cx="16" cy="30" r="2.6" opacity=".7"/><circle cx="26" cy="30" r="2.6" opacity=".7"/>
+                <circle cx="21" cy="35" r="1.6" opacity=".5"/>
+              </g>
+            </svg>
+            <h3>Geospatial & GIS</h3>
+          </div>
+          <p class="dlede">Earth telemetry & terrain models.</p>
+          <ul>
+            <li>Vegetation Condition Index (VCI) drought severity mapping</li>
+            <li>Digital Elevation Model (DEM) runoff & watershed prioritization</li>
+            <li>Urban Heat Island raster calculations client-side in real-time</li>
+            <li>Lightweight Leaflet.js & OpenStreetMap Overpass integrations</li>
+          </ul>
+        </div>
+
+        <!-- Door 3 -->
+        <div class="door glass reveal d3" style="--gd:-12s">
+          <span class="sheen"><i></i></span>
+          <div class="dhead">
+            <svg class="dots" viewBox="0 0 42 42" aria-hidden="true">
+              <g fill="#e6c890">
+                <circle cx="21" cy="21" r="4"/><circle cx="21" cy="8" r="2.1" opacity=".8"/><circle cx="21" cy="34" r="2.1" opacity=".6"/>
+                <circle cx="8" cy="21" r="2.1" opacity=".7"/><circle cx="34" cy="21" r="2.1" opacity=".7"/><circle cx="12" cy="12" r="1.6" opacity=".6"/>
+                <circle cx="30" cy="12" r="1.6" opacity=".6"/><circle cx="12" cy="30" r="1.6" opacity=".5"/><circle cx="30" cy="30" r="1.6" opacity=".5"/>
+              </g>
+            </svg>
+            <h3>Zero-Knowledge & AI</h3>
+          </div>
+          <p class="dlede">Privacy-first AI that runs on the edge.</p>
+          <ul>
+            <li>Client-side encryption (libsodium) protecting developer code</li>
+            <li>AST parsers & native compilers for vernacular education</li>
+            <li>Genetic optimization solvers for constraint satisfaction problems</li>
+            <li>Embedded crop pathology vision diagnostics</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BREATH 1 -->
+  <section class="panel center breath">
+    <div class="wrap">
+      <h2 class="breathline">Reading the terrain&hellip;</h2>
+    </div>
+  </section>
+
+  <!-- SECTION 2: SELECTED WORK -->
+  <section class="panel tall left scrim">
+    <div class="wrap">
+      <span class="eyebrow reveal">featured engineering</span>
+      <h2 class="reveal d1">Selected Work & Systems.</h2>
       
-      <!-- Top Left Header & Action Buttons -->
-      <header class="header">
-        <div class="header-branding">
-          <div class="status-pulse-badge">
-            <span class="pulsing-dot"></span>
-            <span>LIVE 3D SOLAR ORBIT</span>
+      <div class="show-grid">
+        <!-- Project 1: Pradite -->
+        <div class="showpanel glass reveal d2" style="--gd:-3s">
+          <span class="sheen"><i></i></span>
+          <div class="project-meta-row">
+            <span class="project-role-badge">Co-Founder & Growth Lead</span>
+            <span class="project-year">2026 – Present</span>
           </div>
-          <h1>VIVEK CHAURASIYA</h1>
-          <p>Full-Stack, AI & Geospatial Systems • B.Tech AI & ML</p>
-          
-          <!-- Get In Touch & Resume Buttons Placed On The LEFT -->
-          <div class="header-actions-left">
-            <button id="contact-btn" class="contact-btn-left" title="Contact & Connect Details">
-              <span>📬 Get In Touch &rarr;</span>
-            </button>
-            <button id="resume-btn" class="resume-nav-btn" title="View Full Resume">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-                <polyline points="14 2 14 8 20 8"></polyline>
-                <line x1="16" y1="13" x2="8" y2="13"></line>
-                <line x1="16" y1="17" x2="8" y2="17"></line>
-              </svg>
-              <span>Resume</span>
-            </button>
+          <div class="kicker">startup · cryptographic privacy</div>
+          <h3>Pradite</h3>
+          <p class="what">Zero-knowledge BYOK AI security platform protecting developer source code via client-side encryption (libsodium). Developers query frontier models without leaking proprietary IP.</p>
+          <ul>
+            <li>Enforced client-side cryptographic encapsulation so unencrypted code never touches a server</li>
+            <li>Built developer distribution pipeline and onboarding loops across student & indie builder clusters</li>
+            <li>Synthesized community telemetry and bug reports to direct rapid technical roadmap sprints</li>
+            <li>Local key isolation preventing model providers from receiving raw source files</li>
+          </ul>
+          <div class="chips">
+            <span class="chip">libsodium</span><span class="chip">Zero-Knowledge</span><span class="chip">JavaScript</span><span class="chip">Web Crypto</span><span class="chip">LLM Privacy</span>
           </div>
-        </div>
-      </header>
-
-      <!-- Right Side Showcase Panel -->
-      <aside id="projects-panel" class="projects-panel">
-        <div class="panel-header">
-          <div class="panel-header-title">
-            <span class="panel-cyber-icon">✦</span>
-            <h3>PROJECT DIRECTORY</h3>
-          </div>
-          <button id="panel-toggle-btn" class="panel-toggle-btn" title="Collapse Panel">✕</button>
-        </div>
-        <p class="panel-instructions">Click any card to fly the 3D globe to its coordinates:</p>
-        <div id="projects-list" class="projects-list">
-          <!-- Populated dynamically: Startup -> Internship -> Projects -->
-        </div>
-      </aside>
-
-      <!-- Continental Filter Bar -->
-      <nav class="filter-bar">
-        <button class="filter-btn active" data-region="All">All Earth</button>
-        <button class="filter-btn" data-region="Asia">Asia & India</button>
-        <button class="filter-btn" data-region="North America">North America</button>
-        <button class="filter-btn" data-region="Europe">Europe</button>
-        <button class="filter-btn" data-region="Australia">Australia</button>
-        <button class="filter-btn" data-region="Africa">Africa</button>
-      </nav>
-
-      <!-- Bottom Status Tip -->
-      <div class="instructions">
-        ✦ Click any pin or badge to inspect project • Drag & rotate Earth to orbit
-      </div>
-    </div>
-
-    <!-- MODALS (Directly under body for 100% reliable click events & stacking) -->
-
-    <!-- 1. Transparent Project Detail Window on Globe -->
-    <div id="project-modal" class="modal glass-floating-window hidden">
-      <button id="close-modal" class="close-btn" aria-label="Close Window">&times;</button>
-      <div class="modal-content">
-        <!-- Injected dynamically -->
-      </div>
-    </div>
-
-    <!-- 2. Get In Touch Modal with All Contact Details -->
-    <div id="contact-modal" class="contact-modal-overlay hidden">
-      <div class="contact-modal-card">
-        <div class="contact-modal-header">
-          <div>
-            <h3>📬 GET IN TOUCH</h3>
-            <p>Let's collaborate on AI systems, full-stack engineering, or innovative startups.</p>
-          </div>
-          <button id="close-contact-modal" class="close-modal-round-btn">&times;</button>
-        </div>
-
-        <div class="contact-grid">
-          <!-- Email Card -->
-          <div class="contact-detail-card">
-            <div class="contact-card-icon">✉️</div>
-            <div class="contact-card-info">
-              <span class="contact-card-label">Primary Email</span>
-              <strong class="contact-card-val">vivekchaurasiya.work@gmail.com</strong>
-            </div>
-            <div class="contact-card-actions">
-              <a href="mailto:vivekchaurasiya.work@gmail.com" class="contact-action-btn primary">Send Mail &rarr;</a>
-              <button id="copy-email-btn" class="contact-action-btn secondary">Copy</button>
-            </div>
-          </div>
-
-          <!-- LinkedIn Card -->
-          <div class="contact-detail-card">
-            <div class="contact-card-icon">💼</div>
-            <div class="contact-card-info">
-              <span class="contact-card-label">LinkedIn Profile</span>
-              <strong class="contact-card-val">linkedin.com/in/vivek-chaurasiya-5825b4380</strong>
-            </div>
-            <div class="contact-card-actions">
-              <a href="https://www.linkedin.com/in/vivek-chaurasiya-5825b4380" target="_blank" rel="noopener noreferrer" class="contact-action-btn primary" onclick="window.open('https://www.linkedin.com/in/vivek-chaurasiya-5825b4380', '_blank'); return false;">Connect &rarr;</a>
-            </div>
-          </div>
-
-          <!-- GitHub Card -->
-          <div class="contact-detail-card">
-            <div class="contact-card-icon">🐙</div>
-            <div class="contact-card-info">
-              <span class="contact-card-label">GitHub Repositories</span>
-              <strong class="contact-card-val">github.com/vivekchaurasiya277</strong>
-            </div>
-            <div class="contact-card-actions">
-              <a href="https://github.com/vivekchaurasiya277" target="_blank" rel="noopener noreferrer" class="contact-action-btn primary" onclick="window.open('https://github.com/vivekchaurasiya277', '_blank'); return false;">View GitHub &rarr;</a>
-            </div>
-          </div>
-
-          <!-- Location & Education Card -->
-          <div class="contact-detail-card">
-            <div class="contact-card-icon">📍</div>
-            <div class="contact-card-info">
-              <span class="contact-card-label">Location & University</span>
-              <strong class="contact-card-val">Kanpur, Uttar Pradesh, India</strong>
-              <small class="contact-card-sub">Kanpur Institute of Technology (KIT) • B.Tech AI & ML (2023 - 2027)</small>
-            </div>
+          <div class="project-actions">
+            <a class="visit" href="https://github.com/vivekchaurasiya277" target="_blank" rel="noopener">Explore Codebase <em>↗</em></a>
           </div>
         </div>
 
-        <div class="contact-modal-footer">
-          <a href="./vivek_chaurasiya_resume.pdf" download="Vivek_Chaurasiya_Resume.pdf" class="contact-resume-download-btn">
-            📄 Download Official Resume PDF
-          </a>
+        <!-- Project 2: India Space Academy -->
+        <div class="showpanel glass reveal d2" style="--gd:-7s">
+          <span class="sheen"><i></i></span>
+          <div class="project-meta-row">
+            <span class="project-role-badge">Remote Sensing & GIS Engineering Intern</span>
+            <span class="project-year">2025</span>
+          </div>
+          <div class="kicker">satellite tech · geospatial simulation</div>
+          <h3>India Space Academy</h3>
+          <p class="what">Engineered client-side simulation engines for Vegetation Condition Index (VCI) drought severity mapping, Urban Heat Island analysis, and watershed prioritization using Digital Elevation Models (DEM).</p>
+          <ul>
+            <li>Translated satellite imagery algorithms into dependency-free, lightweight JavaScript modules</li>
+            <li>Packaged simulation workflows as standalone single-file HTML modules for offline low-bandwidth field use</li>
+            <li>Integrated elevation gradient mathematics for automated watershed boundary identification</li>
+            <li>Multi-spectral remote sensing indices calculated client-side in real time</li>
+          </ul>
+          <div class="chips">
+            <span class="chip">Remote Sensing</span><span class="chip">GIS Simulation</span><span class="chip">VCI Drought</span><span class="chip">DEM Elevation</span><span class="chip">Leaflet</span>
+          </div>
+          <div class="project-actions">
+            <a class="visit" href="https://github.com/vivekchaurasiya277" target="_blank" rel="noopener">GIS Simulation Modules <em>↗</em></a>
+          </div>
+        </div>
+
+        <!-- Project 3: Suraksha Bandhan -->
+        <div class="showpanel glass reveal d2" style="--gd:-11s">
+          <span class="sheen"><i></i></span>
+          <div class="project-meta-row">
+            <span class="project-role-badge">Featured Hackathon Finalist</span>
+            <span class="project-year">2026</span>
+          </div>
+          <div class="kicker">disaster tech · offline-first pwa</div>
+          <h3>Suraksha Bandhan</h3>
+          <p class="what">Real-Time Disaster Early Warning Progressive Web App (PWA) delivering real-time flood risk predictions and automated SOS dispatch across 6 Indian languages with zero external backend dependencies.</p>
+          <ul>
+            <li>Fused browser Geolocation API with Leaflet spatial mapping and OpenStreetMap Overpass API</li>
+            <li>Real-time river flood severity calculation based on live precipitation curves and terrain gradients</li>
+            <li>Offline-first service worker architecture ensuring warning system operates during network blackouts</li>
+            <li>Emergency alert dispatch over SMS and webhooks to local response networks</li>
+          </ul>
+          <div class="chips">
+            <span class="chip">PWA</span><span class="chip">Leaflet.js</span><span class="chip">OpenStreetMap</span><span class="chip">Geolocation</span><span class="chip">Offline First</span>
+          </div>
+          <div class="project-actions">
+            <a class="visit" href="https://github.com/vivekchaurasiya277/Suraksha-Bandhan" target="_blank" rel="noopener">View Repository <em>↗</em></a>
+          </div>
+        </div>
+
+        <!-- Project 4: Exam Seating Auto-Allocator -->
+        <div class="showpanel glass reveal d2" style="--gd:-15s">
+          <span class="sheen"><i></i></span>
+          <div class="project-meta-row">
+            <span class="project-role-badge">Production Deployment • KIT Exam Cell</span>
+            <span class="project-year">2025</span>
+          </div>
+          <div class="kicker">optimization · operations research</div>
+          <h3>Exam Seating Auto-Allocator</h3>
+          <p class="what">Automated university examination hall allocation formulated as a Constraint Satisfaction Problem (CSP) with genetic optimization. Cut examination scheduling from 6 hours to under 15 minutes.</p>
+          <ul>
+            <li>Custom crossover and mutation operators enforcing room capacity, branch mixing, and disability access</li>
+            <li>Adopted by Kanpur Institute of Technology examination cell in live production across 2 consecutive semesters</li>
+            <li>Flask administration portal automatically generating official institutional seat matrix PDFs</li>
+            <li>Eliminated schedule conflicts and cut planning turnaround from three days to under two minutes</li>
+          </ul>
+          <div class="chips">
+            <span class="chip">Python</span><span class="chip">Genetic Algorithms</span><span class="chip">CSP</span><span class="chip">Flask</span><span class="chip">SQLite</span>
+          </div>
+          <div class="project-actions">
+            <a class="visit" href="https://github.com/vivekchaurasiya277/gatecomplete" target="_blank" rel="noopener">GitHub Project <em>↗</em></a>
+          </div>
         </div>
       </div>
     </div>
+  </section>
 
-    <!-- 3. Comprehensive Resume Modal -->
-    <div id="resume-modal" class="resume-modal-overlay hidden">
-      <div class="resume-modal-card">
-        <div class="resume-header">
-          <div class="resume-title-wrap">
-            <h2>VIVEK CHAURASIYA</h2>
-            <p>Kanpur, India • <a href="mailto:vivekchaurasiya.work@gmail.com">vivekchaurasiya.work@gmail.com</a></p>
-            <div class="resume-links">
-              <a href="https://www.linkedin.com/in/vivek-chaurasiya-5825b4380" target="_blank" rel="noopener noreferrer" onclick="window.open('https://www.linkedin.com/in/vivek-chaurasiya-5825b4380', '_blank'); return false;">LinkedIn ↗</a>
-              <a href="https://github.com/vivekchaurasiya277" target="_blank" rel="noopener noreferrer" onclick="window.open('https://github.com/vivekchaurasiya277', '_blank'); return false;">GitHub ↗</a>
-            </div>
+  <!-- BREATH 2 (NIGHT TRANSITION) -->
+  <section id="p-deeper" class="panel center breath">
+    <div class="wrap">
+      <h2 class="breathline">Stepping into the night shift&hellip;</h2>
+    </div>
+  </section>
+
+  <!-- SECTION 3: THE NIGHT SHIFT -->
+  <section id="p-nightshift" class="panel tall left scrim">
+    <div class="wrap">
+      <span class="eyebrow reveal">the night shift</span>
+      <h2 class="reveal d1">Systems working while you sleep.</h2>
+      
+      <div class="airiver glass" id="airiver" style="--gd:-9s">
+<span class="sheen"><i></i></span>
+<!-- TRUE MIRROR. The right fan used to run 177px while the left ran 278, the outputs sat much
+           closer to the guardrails than the inputs sat to the hub, and the curves were a different
+           shape entirely. Now: both fans run 250px, hub (372) and guardrails (488) sit symmetric
+           about the canvas centre (430), outer nodes sit at equal margins (86 and 774), and each
+           right river is a literal x-reflection of its left partner about x=430, reversed, so the
+           left leaves its node horizontally and the right arrives at its node horizontally.
+           Four out to match four in.
+           Gradient is userSpaceOnUse: a perfectly horizontal path has a zero-height bbox, which makes
+           the default objectBoundingBox gradient degenerate so the stroke never paints at all. -->
+<svg viewBox="0 0 860 310" role="img" aria-label="Multispectral rasters and sensor telemetry flow into the Zero-Knowledge Enclave, through Cryptographic Verifiers, producing verified spatial insights and encrypted inferences">
+<defs>
+  <linearGradient id="wgrad" gradientUnits="userSpaceOnUse" x1="86" y1="0" x2="774" y2="0">
+    <stop offset="0%" stop-color="#1d6b5e"/>
+    <stop offset="45%" stop-color="#3aa386"/>
+    <stop offset="100%" stop-color="#d8b06e"/>
+  </linearGradient>
+</defs>
+<!-- Stream paths from 4 inputs to ZK Enclave -->
+<path class="stream" d="M101 49 C 226 49, 280 135, 351 148"/>
+<path class="stream" d="M101 119 C 208 119, 280 144, 351 152"/>
+<path class="stream" d="M101 189 C 208 189, 280 164, 351 156"/>
+<path class="stream" d="M101 259 C 226 259, 280 173, 351 160"/>
+<!-- Enclave bridge -->
+<path class="stream" d="M397 154 L 467 154"/>
+<!-- Stream paths from Verifier to 4 outputs -->
+<path class="stream" d="M509 148 C 580 135, 634 49, 759 49"/>
+<path class="stream" d="M509 152 C 580 144, 652 119, 759 119"/>
+<path class="stream" d="M509 156 C 580 164, 652 189, 759 189"/>
+<path class="stream" d="M509 160 C 580 173, 634 259, 759 259"/>
+<!-- Flowing animated pulses -->
+<path class="streamtop" d="M101 49 C 226 49, 280 135, 351 148"/>
+<path class="streamtop" style="animation-delay:.6s" d="M101 119 C 208 119, 280 144, 351 152"/>
+<path class="streamtop" style="animation-delay:.3s" d="M101 189 C 208 189, 280 164, 351 156"/>
+<path class="streamtop" style="animation-delay:.9s" d="M101 259 C 226 259, 280 173, 351 160"/>
+<path class="streamtop" style="animation-delay:.45s" d="M397 154 L 467 154"/>
+<path class="streamtop" style="animation-delay:.15s" d="M509 148 C 580 135, 634 49, 759 49"/>
+<path class="streamtop" style="animation-delay:.7s" d="M509 152 C 580 144, 652 119, 759 119"/>
+<path class="streamtop" style="animation-delay:.35s" d="M509 156 C 580 164, 652 189, 759 189"/>
+<path class="streamtop" style="animation-delay:.9s" d="M509 160 C 580 173, 634 259, 759 259"/>
+
+<!-- INPUT 1: Satellite Rasters -->
+<g><circle class="tnode" cx="86" cy="49" r="15"/><g class="tico" transform="translate(78,41)"><circle cx="8" cy="8" r="6" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M2 8h12M8 2c2 3 2 9 0 12M8 2c-2 3-2 9 0 12" fill="none" stroke="currentColor" stroke-width="1.2"/></g><text x="86" y="82">satellite rasters</text></g>
+
+<!-- INPUT 2: Sensor Telemetry -->
+<g><circle class="tnode" cx="86" cy="119" r="15"/><g class="tico" transform="translate(78,111)"><path d="M8 14v-6M5 11l3-3 3 3M2 8a8.5 8.5 0 0 1 12 0M4 10a5.7 5.7 0 0 1 8 0" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></g><text x="86" y="152">sensor telemetry</text></g>
+
+<!-- INPUT 3: Client Codebase -->
+<g><circle class="tnode" cx="86" cy="189" r="15"/><g class="tico" transform="translate(78,181)"><rect x="1" y="1" width="14" height="14" rx="2.5" fill="none" stroke="currentColor" stroke-width="1.3"/><path d="M5 6l-2 2 2 2M11 6l2 2-2 2M9 5l-2 6" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></g><text x="86" y="222">client codebase</text></g>
+
+<!-- INPUT 4: Spatial Grids -->
+<g><circle class="tnode" cx="86" cy="259" r="15"/><g class="tico" transform="translate(78,251)"><circle cx="8" cy="8" r="7" fill="none" stroke="currentColor" stroke-width="1.3"/><circle cx="8" cy="8" r="2" fill="currentColor"/><path d="M8 1v3M8 12v3M1 8h3M12 8h3" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></g><text x="86" y="292">spatial grids</text></g>
+
+<!-- CENTER HUB 1: ZK Enclave (Pradite / Libsodium Engine) -->
+<circle class="tnode" cx="372" cy="154" r="22" style="stroke:#d8b06e;stroke-width:2.2;fill:#0d1c16"/>
+<g class="tico" transform="translate(364,141)" style="stroke:#d8b06e">
+  <path d="M8 2L1 5v5c0 5 7 8 7 8s7-3 7-8V5L8 2z" fill="none" stroke="#d8b06e" stroke-width="1.7" stroke-linejoin="round"/>
+  <circle cx="8" cy="10" r="1.8" fill="#d8b06e"/>
+</g>
+<text x="372" y="197" style="font-weight:600;fill:#ecd49d">ZK Enclave</text>
+
+<!-- CENTER HUB 2: Local Verifier / Zero-Knowledge Proof -->
+<g>
+  <rect class="shieldbx" x="470" y="135" width="36" height="38" rx="10" style="fill:#0a1712;stroke:#d8b06e;stroke-width:1.8"/>
+  <path d="M480 154 l5 6 l13 -12" fill="none" stroke="#d8b06e" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="488" y="197" style="font-weight:600;fill:#ecd49d">Local Verifier</text>
+</g>
+
+<!-- OUTPUT 1: NDVI Indices -->
+<g><circle class="onode" cx="774" cy="49" r="15"/><g class="oico" transform="translate(766,41)"><path d="M2 14c0-6 4-10 10-10 0 6-4 10-10 10zM5 11l6-6" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></g><text class="olabel" x="774" y="82">NDVI indices</text></g>
+
+<!-- OUTPUT 2: Zero-Leak LLM -->
+<g><circle class="onode" cx="774" cy="119" r="15"/><g class="oico" transform="translate(766,111)"><path d="M8 1l1.8 4.2L14 7l-4.2 1.8L8 13l-1.8-4.2L2 7l4.2-1.8L8 1z" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/><circle cx="13" cy="2" r="1" fill="currentColor"/><circle cx="3" cy="12" r="1" fill="currentColor"/></g><text class="olabel" x="774" y="152">zero-leak LLM</text></g>
+
+<!-- OUTPUT 3: Offline Alerts -->
+<g><circle class="onode" cx="774" cy="189" r="15"/><g class="oico" transform="translate(766,181)"><path d="M8 1a5 5 0 0 0-5 5v3l-1.5 2h13L13 9V6a5 5 0 0 0-5-5zM6 13a2 2 0 0 0 4 0" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></g><text class="olabel" x="774" y="222">offline alerts</text></g>
+
+<!-- OUTPUT 4: Spatial Routes -->
+<g><circle class="onode" cx="774" cy="259" r="15"/><g class="oico" transform="translate(766,251)"><circle cx="3" cy="13" r="2" fill="none" stroke="currentColor" stroke-width="1.3"/><circle cx="13" cy="3" r="2" fill="none" stroke="currentColor" stroke-width="1.3"/><circle cx="13" cy="13" r="2" fill="none" stroke="currentColor" stroke-width="1.3"/><path d="M3 11V7a2 2 0 0 1 2-2h6M13 5v6" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></g><text class="olabel" x="774" y="292">spatial routes</text></g>
+</svg>
+<!-- MOBILE. The river is 860 units wide; on a 390px phone it scales to 0.343, rendering its
+           11px labels at 3.78px. Removing every scrap of padding only reaches 4.46px, and raising the
+           SVG font to compensate would need ~32px inside a viewBox where nodes sit 52 apart, the
+           labels would overlap everything. A wide diagram simply cannot work at phone width, so below
+           860px the river is swapped for this vertical flow: same icons, same colours, same dash
+           animation, but real HTML text that sizes natively and cannot collide. -->
+<div class="flow">
+<div class="fgrid">
+  <span class="fnode"><i class="fdot"><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="6" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M2 8h12M8 2c2 3 2 9 0 12M8 2c-2 3-2 9 0 12" fill="none" stroke="currentColor" stroke-width="1.2"/></svg></i><b>satellite rasters</b></span>
+  <span class="fnode"><i class="fdot"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 14v-6M5 11l3-3 3 3M2 8a8.5 8.5 0 0 1 12 0" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></i><b>sensor telemetry</b></span>
+  <span class="fnode"><i class="fdot"><svg viewBox="0 0 16 16" aria-hidden="true"><rect x="1" y="1" width="14" height="14" rx="2.5" fill="none" stroke="currentColor" stroke-width="1.3"/><path d="M5 6l-2 2 2 2M11 6l2 2-2 2" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg></i><b>client codebase</b></span>
+  <span class="fnode"><i class="fdot"><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="7" fill="none" stroke="currentColor" stroke-width="1.3"/><circle cx="8" cy="8" r="2" fill="currentColor"/></svg></i><b>spatial grids</b></span>
+</div>
+
+      <div class="reveal d2" style="margin-top:24px">
+        <p class="lead">Client-side encryption running before data ever touches a network cable. Automated telemetry pipelines pulling sensor streams, satellite rasters, and alerts into unified queries.</p>
+        <p class="lead" style="margin-top:12px;color:#a4b09e">Autonomous telemetry processing while you sleep. Complete cryptographic certainty when you wake.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- BREATH 3 -->
+  <section class="panel center breath">
+    <div class="wrap">
+      <h2 class="breathline">Emerging to ground truth&hellip;</h2>
+    </div>
+  </section>
+
+  <!-- SECTION 4: WHERE I BUILD -->
+  <section class="panel tall left scrim locale">
+    <div class="wrap">
+      <span class="eyebrow reveal">roots & foundation</span>
+      <h2 class="reveal d1">Engineering from Kanpur.</h2>
+      <div class="split">
+        <div class="reveal d1">
+          <p class="lead">Vivek is based in Kanpur, Uttar Pradesh, studying Computer Science & Engineering (AI & ML) at Kanpur Institute of Technology (SGPA 8.48). Building software grounded in real constraints - low bandwidth, high privacy, and verified ground truth.</p>
+          <div class="chips" style="margin-top:20px">
+            <span class="chip">Python</span><span class="chip">JavaScript (ES6+)</span><span class="chip">C++</span>
+            <span class="chip">Three.js</span><span class="chip">Leaflet.js</span><span class="chip">libsodium</span>
+            <span class="chip">Node.js</span><span class="chip">Flask</span><span class="chip">PostgreSQL</span>
+            <span class="chip">SQLite</span><span class="chip">Docker</span><span class="chip">Git</span>
           </div>
-          <div class="resume-header-actions">
-            <a href="./vivek_chaurasiya_resume.pdf" download="Vivek_Chaurasiya_Resume.pdf" class="download-resume-btn">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                <polyline points="7 10 12 15 17 10"></polyline>
-                <line x1="12" y1="15" x2="12" y2="3"></line>
-              </svg>
-              <span>Download PDF</span>
-            </a>
-            <button id="close-resume-modal" class="close-modal-round-btn">&times;</button>
-          </div>
-        </div>
-
-        <div class="resume-scrollable-body">
-          <!-- Education -->
-          <section class="resume-section">
-            <h3 class="section-title">EDUCATION</h3>
-            <div class="resume-item">
-              <div class="resume-item-header">
-                <strong>Kanpur Institute of Technology (KIT)</strong>
-                <span class="resume-date">2023 – 2027</span>
-              </div>
-              <div class="resume-role">Bachelor of Technology in Computer Science & Engineering (AI & ML) • Kanpur, India</div>
-              <p class="resume-stat"><strong>Academic Record:</strong> SGPA: 8.48/10 (Semester 6) | Cumulative CGPA: 7.0/10 across core CS & AI coursework</p>
-              <p class="resume-subtext"><strong>Core Coursework:</strong> Data Structures & Algorithms, DBMS, Operating Systems, Machine Learning, OOP</p>
-            </div>
-          </section>
-
-          <!-- Technical Experience -->
-          <section class="resume-section">
-            <h3 class="section-title">TECHNICAL EXPERIENCE</h3>
-            
-            <div class="resume-item">
-              <div class="resume-item-header">
-                <strong>Pradite</strong>
-                <span class="resume-date">June 2026 – Present</span>
-              </div>
-              <div class="resume-role">Co-Founder & Growth Lead • Kanpur, India</div>
-              <ul class="resume-bullets">
-                <li>Co-founded zero-knowledge BYOK AI platform protecting developer code via client-side encryption (libsodium); drove initial developer onboarding and feedback loops.</li>
-                <li>Built product distribution pipeline and community channels across student and indie developer clusters; synthesized bug reports to prioritize technical roadmap sprints.</li>
-              </ul>
-            </div>
-
-            <div class="resume-item">
-              <div class="resume-item-header">
-                <strong>India Space Academy</strong>
-                <span class="resume-date">May 2025 – July 2025</span>
-              </div>
-              <div class="resume-role">Remote Sensing & GIS Software Engineering Intern • Remote</div>
-              <ul class="resume-bullets">
-                <li>Engineered client-side simulation engines for Vegetation Condition Index (VCI) drought severity mapping, Urban Heat Island analysis, and watershed prioritization using Digital Elevation Models (DEM).</li>
-                <li>Translated satellite imagery processing algorithms into lightweight, dependency-free JavaScript modules packaged as single HTML files for offline use in low-bandwidth environments.</li>
-              </ul>
-            </div>
-          </section>
-
-          <!-- Featured Projects -->
-          <section class="resume-section">
-            <h3 class="section-title">FEATURED PROJECTS</h3>
-            
-            <div class="resume-item">
-              <div class="resume-item-header">
-                <strong>Suraksha Bandhan: Real-Time Disaster Early Warning PWA</strong>
-                <span class="resume-date">2026</span>
-              </div>
-              <div class="resume-tech-line">JavaScript, Leaflet, PWA, Geolocation API, OpenStreetMap Overpass API</div>
-              <ul class="resume-bullets">
-                <li>Built an offline-first Progressive Web App (PWA) delivering real-time flood risk predictions and emergency alerts across 6 Indian languages with zero external backend dependencies.</li>
-                <li>Integrated browser Geolocation API with Leaflet spatial mapping and OpenStreetMap Overpass API to calculate real-time river flood severity based on precipitation and elevation data.</li>
-                <li>Shortlisted in hackathon competition; implemented emergency SOS dispatch triggering pre-configured emergency services with zero latency.</li>
-              </ul>
-            </div>
-
-            <div class="resume-item">
-              <div class="resume-item-header">
-                <strong>Exam Seating Auto-Allocator</strong>
-                <span class="resume-date">2025</span>
-              </div>
-              <div class="resume-tech-line">Python, Flask, SQLite, Genetic Algorithms, Constraint Satisfaction (CSP)</div>
-              <ul class="resume-bullets">
-                <li>Automated university examination hall allocation as a Constraint Satisfaction Problem (CSP) enforcing room capacity, branch mixing, and disability accommodation rules.</li>
-                <li>Implemented genetic optimization algorithm with tailored crossover/mutation operators, cutting manual examination scheduling from 6 hours to under 15 minutes.</li>
-                <li>Built a Flask administration portal generating official seat matrix PDFs; adopted by KIT examination cell in production across 2 consecutive semesters.</li>
-              </ul>
-            </div>
-
-            <div class="resume-item">
-              <div class="resume-item-header">
-                <strong>FunLangLab & HindiCode: Vernacular Transpiler & Web IDE</strong>
-                <span class="resume-date">2025</span>
-              </div>
-              <div class="resume-tech-line">JavaScript, AST Parser, Claude API, Compiler Architecture</div>
-              <ul class="resume-bullets">
-                <li>Developed a recursive descent parser and AST-based compiler supporting native Hindi and hybrid syntax, transpiling educational programming constructs directly into executable JavaScript.</li>
-                <li>Engineered an in-browser execution sandbox with Claude API integration for automated syntax hint generation and natural-language error translation.</li>
-                <li>Conducted user testing with 15 students at Barabanki secondary school; 80% of novice students wrote independent loops within 30 minutes.</li>
-              </ul>
-            </div>
-
-            <div class="resume-item">
-              <div class="resume-item-header">
-                <strong>Smart IoT Water Level & Telemetry Monitor</strong>
-                <span class="resume-date">2024 – 2025</span>
-              </div>
-              <div class="resume-tech-line">C++, Arduino Uno, ESP8266, Blynk IoT, MQTT, HC-SR04 Ultrasonic Sensors</div>
-              <ul class="resume-bullets">
-                <li>Architected an automated water level telemetry system using HC-SR04 ultrasonic sensors calibrated to cylindrical geometry, transmitting metrics via ESP8266 Wi-Fi over MQTT.</li>
-                <li>Deployed production units across 2 campus hostel overhead tanks; prevented 3 overflow incidents in month one and cut water wastage by ~20%.</li>
-              </ul>
-            </div>
-          </section>
-
-          <!-- Technical Skills -->
-          <section class="resume-section">
-            <h3 class="section-title">TECHNICAL SKILLS</h3>
-            <div class="skills-grid">
-              <div class="skill-group">
-                <strong>Languages:</strong>
-                <span>Python, JavaScript (ES6+), C++, Java, C, SQL (MySQL, SQLite), HTML5/CSS3</span>
-              </div>
-              <div class="skill-group">
-                <strong>Frameworks & Web:</strong>
-                <span>Node.js, Express.js, Flask, React.js basics, RESTful APIs, Leaflet.js, Progressive Web Apps (PWA)</span>
-              </div>
-              <div class="skill-group">
-                <strong>Embedded & Systems:</strong>
-                <span>Arduino Uno/Nano, ESP8266/ESP32, Raspberry Pi, Sensor Interfacing (Ultrasonic, DHT, PIR), MQTT, CoAP</span>
-              </div>
-              <div class="skill-group">
-                <strong>Tools & Databases:</strong>
-                <span>Git, GitHub, Docker basics, Linux/Unix Shell, MongoDB, MySQL, SQLite, Firebase, Postman, VS Code</span>
-              </div>
-            </div>
-          </section>
-
-          <!-- Leadership & Recognition -->
-          <section class="resume-section">
-            <h3 class="section-title">LEADERSHIP & RECOGNITION</h3>
-            <ul class="resume-bullets">
-              <li><strong>Hackathon Shortlist (Suraksha Bandhan):</strong> Shortlisted for real-time disaster early-warning system prototype.</li>
-              <li><strong>Production Institutional Deployment:</strong> Exam Seating Auto-Allocator adopted and deployed by KIT Examination Cell.</li>
-              <li><strong>Technical Club Mentorship:</strong> Guided 40+ junior engineering students in micro-controller setup, Arduino debugging, and IoT prototyping.</li>
-            </ul>
-          </section>
         </div>
       </div>
     </div>
+  </section>
 
-    <!-- Main Module Script -->
-    <script type="module" src="./js/main.js"></script>
-  </body>
+  <!-- BREATH 4 -->
+  <section class="panel center breath">
+    <div class="wrap">
+      <h2 class="breathline">Coordinates locked&hellip;</h2>
+    </div>
+  </section>
+
+  <!-- SECTION 5: FINALE & CONTACT -->
+  <section class="panel left" id="book">
+    <div class="wrap">
+      <span class="eyebrow reveal">over to you</span>
+      <h2 class="reveal d1">Let's build something ambitious.</h2>
+      <p class="lead reveal d2">An honest look at your systems, startup, or engineering challenge : architecture, security models, or spatial telemetry. No jargon, no pressure, no endless follow-ups.</p>
+
+      <!-- Fast Direct Contact Cards -->
+      <div class="contact-fast-grid reveal d2">
+        <!-- Email -->
+        <div class="contact-fast-card">
+          <div class="fast-card-left">
+            <span class="fast-card-icon">✉️</span>
+            <div class="fast-card-info">
+              <span class="fast-card-label">Direct Email</span>
+              <span class="fast-card-val">vivekchaurasiya.work@gmail.com</span>
+            </div>
+          </div>
+          <button id="copy-email-fast-btn" class="fast-card-btn">Copy</button>
+        </div>
+
+        <!-- LinkedIn -->
+        <div class="contact-fast-card">
+          <div class="fast-card-left">
+            <span class="fast-card-icon">💼</span>
+            <div class="fast-card-info">
+              <span class="fast-card-label">LinkedIn Profile</span>
+              <span class="fast-card-val">Vivek Chaurasiya</span>
+            </div>
+          </div>
+          <a href="https://www.linkedin.com/in/vivek-chaurasiya-5825b4380" target="_blank" rel="noopener" class="fast-card-btn">Connect ↗</a>
+        </div>
+
+        <!-- GitHub -->
+        <div class="contact-fast-card">
+          <div class="fast-card-left">
+            <span class="fast-card-icon">🐙</span>
+            <div class="fast-card-info">
+              <span class="fast-card-label">GitHub Repos</span>
+              <span class="fast-card-val">@vivekchaurasiya277</span>
+            </div>
+          </div>
+          <a href="https://github.com/vivekchaurasiya277" target="_blank" rel="noopener" class="fast-card-btn">View ↗</a>
+        </div>
+
+        <!-- Official Resume -->
+        <div class="contact-fast-card">
+          <div class="fast-card-left">
+            <span class="fast-card-icon">📄</span>
+            <div class="fast-card-info">
+              <span class="fast-card-label">Full Dossier</span>
+              <span class="fast-card-val">Curriculum Vitae</span>
+            </div>
+          </div>
+          <button id="open-resume-btn" class="fast-card-btn">View CV ↗</button>
+        </div>
+      </div>
+
+      <!-- Direct Message Form -->
+      <form class="bform reveal d2" id="bform" method="POST" action="https://formspree.io/f/mzdnkykk" novalidate>
+        <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" class="gotcha">
+        <input type="hidden" name="_subject" value="New enquiry for Vivek Chaurasiya">
+        <div class="frow">
+          <div class="f">
+            <input type="text" id="ff-name" name="name" placeholder=" " required autocomplete="name">
+            <label for="ff-name">Your name</label>
+            <span class="ferr" data-for="name"></span>
+          </div>
+          <div class="f">
+            <input type="email" id="ff-email" name="email" placeholder=" " required autocomplete="email">
+            <label for="ff-email">Email</label>
+            <span class="ferr" data-for="email"></span>
+          </div>
+        </div>
+        <div class="f">
+          <input type="tel" id="ff-phone" name="phone" placeholder=" " autocomplete="tel">
+          <label for="ff-phone">Phone <em>optional</em></label>
+          <span class="ferr" data-for="phone"></span>
+        </div>
+        <fieldset class="f pick">
+          <legend>What are you looking to collaborate on?</legend>
+          <div class="picks">
+            <label><input type="checkbox" name="interest" value="Web & Systems"><span data-t="Web & Systems">Web & Systems</span></label>
+            <label><input type="checkbox" name="interest" value="Geospatial / GIS"><span data-t="Geospatial / GIS">Geospatial / GIS</span></label>
+            <label><input type="checkbox" name="interest" value="Zero-Knowledge AI"><span data-t="Zero-Knowledge AI">Zero-Knowledge AI</span></label>
+            <label><input type="checkbox" name="interest" value="Other"><span data-t="Other">Other</span></label>
+          </div>
+        </fieldset>
+        <div class="f">
+          <textarea id="ff-msg" name="message" rows="3" placeholder=" "></textarea>
+          <label for="ff-msg">Tell me more about your project or role</label>
+          <span class="ferr" data-for="message"></span>
+        </div>
+        <button type="submit" id="bsubmit"><span class="t">Start the conversation</span><em>→</em></button>
+        <p class="fstatus" id="fstatus" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+  </section>
+</main>
+
+<!-- COMPREHENSIVE RESUME DOSSIER MODAL -->
+<div id="resume-modal" class="resume-modal-overlay hidden">
+  <div class="resume-modal-card">
+    <div class="resume-header">
+      <div class="resume-title-wrap">
+        <h2>VIVEK CHAURASIYA</h2>
+        <p>Kanpur, India • <a href="mailto:vivekchaurasiya.work@gmail.com" style="color:#e6c890">vivekchaurasiya.work@gmail.com</a></p>
+      </div>
+      <div class="resume-header-actions">
+        <a href="/vivek_chaurasiya_resume.pdf" download="Vivek_Chaurasiya_Resume.pdf" class="download-resume-btn">
+          <span>Download PDF</span>
+        </a>
+        <button id="close-resume-modal" class="close-modal-round-btn">&times;</button>
+      </div>
+    </div>
+
+    <div class="resume-scrollable-body">
+      <!-- Education -->
+      <section class="resume-section">
+        <h3 class="section-title">EDUCATION</h3>
+        <div class="resume-item">
+          <div class="resume-item-header">
+            <strong>Kanpur Institute of Technology (KIT)</strong>
+            <span class="resume-date">2023 – 2027</span>
+          </div>
+          <div class="resume-role">Bachelor of Technology in Computer Science & Engineering (AI & ML) • Kanpur, India</div>
+          <p class="resume-stat"><strong>Academic Record:</strong> SGPA: 8.48/10 (Semester 6) | Cumulative CGPA: 7.0/10 across core CS & AI coursework</p>
+          <p class="resume-subtext"><strong>Core Coursework:</strong> Data Structures & Algorithms, DBMS, Operating Systems, Machine Learning, OOP</p>
+        </div>
+      </section>
+
+      <!-- Technical Experience -->
+      <section class="resume-section">
+        <h3 class="section-title">TECHNICAL EXPERIENCE</h3>
+        
+        <div class="resume-item">
+          <div class="resume-item-header">
+            <strong>Pradite</strong>
+            <span class="resume-date">June 2026 – Present</span>
+          </div>
+          <div class="resume-role">Co-Founder & Growth Lead • Kanpur, India</div>
+          <ul class="resume-bullets">
+            <li>Co-founded zero-knowledge BYOK AI platform protecting developer code via client-side encryption (libsodium); drove initial developer onboarding and feedback loops.</li>
+            <li>Built product distribution pipeline and community channels across student and indie developer clusters; synthesized bug reports to prioritize technical roadmap sprints.</li>
+          </ul>
+        </div>
+
+        <div class="resume-item">
+          <div class="resume-item-header">
+            <strong>India Space Academy</strong>
+            <span class="resume-date">May 2025 – July 2025</span>
+          </div>
+          <div class="resume-role">Remote Sensing & GIS Software Engineering Intern • Remote</div>
+          <ul class="resume-bullets">
+            <li>Engineered client-side simulation engines for Vegetation Condition Index (VCI) drought severity mapping, Urban Heat Island analysis, and watershed prioritization using Digital Elevation Models (DEM).</li>
+            <li>Translated satellite imagery processing algorithms into lightweight, dependency-free JavaScript modules packaged as single HTML files for offline use in low-bandwidth environments.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Featured Projects -->
+      <section class="resume-section">
+        <h3 class="section-title">FEATURED PROJECTS</h3>
+        
+        <div class="resume-item">
+          <div class="resume-item-header">
+            <strong>Suraksha Bandhan: Real-Time Disaster Early Warning PWA</strong>
+            <span class="resume-date">2026</span>
+          </div>
+          <div class="resume-tech-line">JavaScript, Leaflet, PWA, Geolocation API, OpenStreetMap Overpass API</div>
+          <ul class="resume-bullets">
+            <li>Built an offline-first Progressive Web App (PWA) delivering real-time flood risk predictions and emergency alerts across 6 Indian languages with zero external backend dependencies.</li>
+            <li>Integrated browser Geolocation API with Leaflet spatial mapping and OpenStreetMap Overpass API to calculate real-time river flood severity based on precipitation and elevation data.</li>
+            <li>Hackathon finalist; implemented emergency alert dispatch over SMS and webhooks to local networks.</li>
+          </ul>
+        </div>
+
+        <div class="resume-item">
+          <div class="resume-item-header">
+            <strong>Exam Seating Auto-Allocator</strong>
+            <span class="resume-date">2025</span>
+          </div>
+          <div class="resume-tech-line">Python, Flask, SQLite, Genetic Algorithms, Constraint Satisfaction (CSP)</div>
+          <ul class="resume-bullets">
+            <li>Automated university examination hall allocation as a Constraint Satisfaction Problem (CSP) enforcing room capacity, branch mixing, and disability accommodation rules.</li>
+            <li>Implemented genetic optimization algorithm with tailored crossover/mutation operators, cutting manual examination scheduling from 6 hours to under 15 minutes.</li>
+            <li>Built a Flask administration portal generating official seat matrix PDFs; adopted by KIT examination cell in production across 2 consecutive semesters.</li>
+          </ul>
+        </div>
+
+        <div class="resume-item">
+          <div class="resume-item-header">
+            <strong>FunLangLab & HindiCode: Vernacular Transpiler & Web IDE</strong>
+            <span class="resume-date">2025</span>
+          </div>
+          <div class="resume-tech-line">JavaScript, AST Parser, Claude API, Compiler Architecture</div>
+          <ul class="resume-bullets">
+            <li>Developed a recursive descent parser and AST-based compiler supporting native Hindi and hybrid syntax, transpiling educational programming constructs directly into executable JavaScript.</li>
+            <li>Engineered an in-browser execution sandbox with Claude API integration for automated syntax hint generation and natural-language error translation.</li>
+            <li>Conducted user testing with 15 students at Barabanki secondary school; 80% of novice students wrote independent loops within 30 minutes.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Technical Skills -->
+      <section class="resume-section">
+        <h3 class="section-title">TECHNICAL SKILLS</h3>
+        <div class="skills-grid">
+          <div class="skill-group">
+            <strong>Languages:</strong>
+            <span>Python, JavaScript (ES6+), C++, Java, C, SQL (MySQL, SQLite), HTML5/CSS3</span>
+          </div>
+          <div class="skill-group">
+            <strong>Frameworks & Web:</strong>
+            <span>Node.js, Express.js, Flask, React.js basics, RESTful APIs, Leaflet.js, Progressive Web Apps (PWA)</span>
+          </div>
+          <div class="skill-group">
+            <strong>Systems & Embedded:</strong>
+            <span>Arduino, ESP8266/ESP32, Sensor Interfacing (Ultrasonic, DHT), MQTT, Linux/Unix Shell, Git, Docker basics</span>
+          </div>
+          <div class="skill-group">
+            <strong>Databases & Tools:</strong>
+            <span>PostgreSQL, SQLite, MongoDB, Firebase, Postman, VS Code, Leaflet GIS</span>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+</div>
+
+<!-- SCRIPTS: Tree Foliage Library & 3D Walk Engine -->
+<script type="module" src="./js/main.js"></script>
+</body>
 </html>

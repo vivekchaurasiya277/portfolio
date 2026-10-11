@@ -101,7 +101,7 @@
       "subtitle": "Multi-Modal Travel Optimization Engine",
       "category": "3D Transit & Routing",
       "year": "2026",
-      "description": "Next-generation travel routing engine designed to seamlessly calculate the most efficient, cheapest, and fastest journeys across cities and states. Built with an immersive 3D-parallax interface, it dynamically combines various modes of transport—walking, autos, metro, buses, trains, and cabs—into single cohesive itineraries with live Pareto route tradeoffs.",
+      "description": "Next-generation travel routing engine designed to seamlessly calculate the most efficient, cheapest, and fastest journeys across cities and states. Built with an immersive 3D-parallax interface, it dynamically combines various modes of transport-walking, autos, metro, buses, trains, and cabs-into single cohesive itineraries with live Pareto route tradeoffs.",
       "highlights": [
         "Multi-modal route optimizer combining metro, bus, cab, train & walking",
         "Pareto cost and latency route trade-off calculations",

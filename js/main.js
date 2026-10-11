@@ -1,109 +1,81 @@
-import * as THREE from 'three';
-import { GlobeScene } from './globe.js';
-import { createEarth, createStarfield } from './earth.js';
-import { MarkerSystem } from './markers.js';
-import { InteractionSystem } from './interactions.js';
-import { UISystem } from './ui.js';
-import { PlanetarySystem } from './planets.js';
+import './walk.js';
 
-// Initialize Core 3D Scene
-const globeScene = new GlobeScene('canvas-container');
-const { earthGroup, earthMesh } = createEarth(50);
-const starfield = createStarfield();
+// Interactive UI Enhancements for Vivek's Portfolio
+document.addEventListener('DOMContentLoaded', () => {
+  // Plain View vs Cinematic View Toggle
+  const viewToggleBtn = document.getElementById('view-toggle-btn');
+  const viewToggleText = viewToggleBtn ? viewToggleBtn.querySelector('.t') : null;
 
-globeScene.add(earthGroup);
-globeScene.add(starfield);
+  const setViewMode = (mode) => {
+    if (mode === 'plain') {
+      document.body.classList.add('plain-view');
+      if (viewToggleText) viewToggleText.textContent = 'Cinematic view';
+      try { localStorage.setItem('vivek_portfolio_view', 'plain'); } catch(e){}
+    } else {
+      document.body.classList.remove('plain-view');
+      if (viewToggleText) viewToggleText.textContent = 'Plain view';
+      try { localStorage.setItem('vivek_portfolio_view', 'cinematic'); } catch(e){}
+      window.dispatchEvent(new Event('resize'));
+    }
+  };
 
-// Celestial Planetary System (Moon, Mars, Jupiter, Saturn, Neptune)
-const planetarySystem = new PlanetarySystem(globeScene.scene);
-
-const markerSystem = new MarkerSystem(earthGroup, 50);
-const uiSystem = new UISystem(null);
-const interactionSystem = new InteractionSystem(
-  globeScene.camera, 
-  globeScene.controls, 
-  globeScene.scene, 
-  markerSystem, 
-  uiSystem
-);
-uiSystem.interactionSystem = interactionSystem;
-
-// Load Projects Data & Initialize
-async function init() {
   try {
-    let progress = 0;
-    const progressEl = document.querySelector('.loading-progress');
-    const loadInterval = setInterval(() => {
-      progress += 15;
-      if (progressEl) progressEl.textContent = `${Math.min(progress, 90)}%`;
-      if (progress >= 90) clearInterval(loadInterval);
-    }, 80);
-
-    let projects = [];
-    try {
-      const response = await fetch('./assets/projects.json');
-      if (response.ok) {
-        const data = await response.json();
-        projects = data.projects;
-      } else {
-        const response2 = await fetch('./public/assets/projects.json');
-        if (response2.ok) {
-          const data = await response2.json();
-          projects = data.projects;
-        }
-      }
-    } catch (e) {
-      console.warn('Fallback fetching projects:', e);
+    const savedView = localStorage.getItem('vivek_portfolio_view');
+    if (savedView === 'plain') {
+      setViewMode('plain');
     }
+  } catch(e){}
 
-    if (projects && projects.length > 0) {
-      // Create pins on the globe
-      projects.forEach(p => markerSystem.createMarker(p));
-      // Populate Right Side Showcase Panel
-      uiSystem.setProjects(projects);
-    }
-
-    clearInterval(loadInterval);
-    uiSystem.hideLoading();
-
-  } catch (error) {
-    console.error('Error initializing portfolio:', error);
-    uiSystem.hideLoading();
+  if (viewToggleBtn) {
+    viewToggleBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      const isPlain = document.body.classList.contains('plain-view');
+      setViewMode(isPlain ? 'cinematic' : 'plain');
+    });
   }
 
-  // Animation Loop
-  const clock = new THREE.Clock();
+  // Resume Modal Triggers
+  const resumeBtn = document.getElementById('open-resume-btn');
+  const navResumeBtn = document.getElementById('nav-resume-btn');
+  const resumeModal = document.getElementById('resume-modal');
+  const closeResumeBtn = document.getElementById('close-resume-modal');
 
-  function animate() {
-    requestAnimationFrame(animate);
-    
-    const elapsedTime = clock.getElapsedTime();
-    
-    // Animate Markers and their 2D Screen Badges
-    markerSystem.update(elapsedTime, globeScene.camera, earthGroup);
+  const openResume = (e) => {
+    if (e) e.preventDefault();
+    if (resumeModal) resumeModal.classList.remove('hidden');
+  };
 
-    // Animate Solar System Planets (Moon orbit, Mars, Jupiter, Saturn, Neptune)
-    planetarySystem.update(elapsedTime);
-    
-    // Slow deep-space starfield rotation
-    starfield.rotation.y = elapsedTime * 0.015;
-    
-    // Foreground Parallax Space Dust
-    if (starfield.userData.dustMesh) {
-      starfield.userData.dustMesh.rotation.y = elapsedTime * 0.05;
-      starfield.userData.dustMesh.rotation.z = elapsedTime * 0.02;
-    }
+  const closeResume = () => {
+    if (resumeModal) resumeModal.classList.add('hidden');
+  };
 
-    // Realistic Cloud Atmosphere Rotation (Zoom Earth style)
-    if (earthGroup.userData.cloudMesh) {
-      earthGroup.userData.cloudMesh.rotation.y = elapsedTime * 0.012;
-      earthGroup.userData.cloudMesh.rotation.x = Math.sin(elapsedTime * 0.005) * 0.006;
-    }
+  if (resumeBtn) resumeBtn.addEventListener('click', openResume);
+  if (navResumeBtn) navResumeBtn.addEventListener('click', openResume);
+  if (closeResumeBtn) closeResumeBtn.addEventListener('click', closeResume);
 
-    globeScene.render();
+  if (resumeModal) {
+    resumeModal.addEventListener('click', (e) => {
+      if (e.target === resumeModal) closeResume();
+    });
   }
 
-  animate();
-}
+  // Copy Email Button
+  const copyBtn = document.getElementById('copy-email-fast-btn');
+  if (copyBtn) {
+    copyBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      navigator.clipboard.writeText('vivekchaurasiya.work@gmail.com').then(() => {
+        const orig = copyBtn.textContent;
+        copyBtn.textContent = 'Copied! ✓';
+        setTimeout(() => {
+          copyBtn.textContent = orig;
+        }, 2000);
+      });
+    });
+  }
 
-init();
+  // Keyboard Escape
+  window.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeResume();
+  });
+});
