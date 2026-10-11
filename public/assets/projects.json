@@ -14,11 +14,11 @@
         "National Hackathon Shortlist recognition"
       ],
       "location": {
-        "name": "Ganga River Basin, India",
+        "name": "Ganga Basin Node",
         "lat": 26.4499,
         "lng": 80.3319
       },
-      "continent": "India",
+      "continent": "Asia",
       "tech": ["JavaScript", "Leaflet.js", "PWA", "OpenStreetMap API", "Geolocation API"],
       "link": "https://github.com/vivekchaurasiya277/Suraksha-Bandhan"
     },
@@ -35,7 +35,7 @@
         "Built developer distribution channels and continuous feedback sprint loops"
       ],
       "location": {
-        "name": "Silicon Valley, California",
+        "name": "Pacific West Node",
         "lat": 37.7749,
         "lng": -122.4194
       },
@@ -56,9 +56,9 @@
         "Packaged satellite algorithms into dependency-free offline JavaScript modules"
       ],
       "location": {
-        "name": "Space & Satellite Center, Paris",
-        "lat": 48.8566,
-        "lng": 2.3522
+        "name": "Atlantic European Node",
+        "lat": 52.5200,
+        "lng": 13.4050
       },
       "continent": "Europe",
       "tech": ["GIS", "Remote Sensing", "Digital Elevation Models", "VCI", "JavaScript"],
@@ -78,7 +78,7 @@
         "Flask administration dashboard generating official seat matrix PDFs"
       ],
       "location": {
-        "name": "University Lab, Sydney",
+        "name": "Oceania South Node",
         "lat": -33.8688,
         "lng": 151.2093
       },
@@ -100,11 +100,11 @@
         "Democratizing programming literacy for non-English speakers"
       ],
       "location": {
-        "name": "Language & AST Lab, Tokyo",
-        "lat": 35.6762,
-        "lng": 139.6503
+        "name": "Latin America Node",
+        "lat": -22.9068,
+        "lng": -43.1729
       },
-      "continent": "Asia",
+      "continent": "South America",
       "tech": ["JavaScript", "AST Parser", "Claude API", "Compiler Design"],
       "link": "https://github.com/vivekchaurasiya277/codeguru"
     },
@@ -122,7 +122,7 @@
         "Prevented 3 overflow incidents and reduced campus water wastage by ~20%"
       ],
       "location": {
-        "name": "Water IoT Outpost, Nairobi",
+        "name": "African Rift Node",
         "lat": -1.2921,
         "lng": 36.8219
       },
@@ -143,7 +143,7 @@
         "Web3.js wallet authentication and verified decentralized state"
       ],
       "location": {
-        "name": "Crypto Hub, New York",
+        "name": "East Coast Node",
         "lat": 40.7128,
         "lng": -74.0060
       },
